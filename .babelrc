@@ -1,0 +1,20 @@
+{
+  "presets": [["react-app", { "flow": false, "typescript": true }]],
+  "plugins": [
+    [
+      
+      "module-resolver",
+      {
+        "root": [
+          "./"
+        ],
+        "alias": {
+          "@primitives": "src/components/primitives",
+          "@sys/action":["src/system/action"],
+          "@sys/const":["src/system/constant/constant"],
+          "@sys/httpCall":["src/system/httpCall"]
+        }
+      }
+    ]
+  ]
+}

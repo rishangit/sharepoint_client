@@ -1,25 +1,35 @@
 import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+// import { Helmet } from 'react-helmet';
 import './App.css';
+import { Button, ButtonProps } from '@primitives';
+import AuthComponent from './modules/auth'
+import  LoginComponent  from './modules/auth/login'
 
 function App() {
+  const btnHellowProps: ButtonProps = {
+    themeColor: 'primary',
+    disabled: true,
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      {/* <Helmet>
+        <title>AIRSTATE</title>
+      </Helmet> */}
+      <Routes>
+        <Route path="/" element={<AuthComponent/>} >
+        {/* <Route path="/login" element={<LoginComponent/>}/> */}
+        {/* <Route path="/" component={MainComponent}></Route> */}
+        {/* <PrivateRouteLoggedUser path="/" component={MainComponent} /> */}
+            <Route path="*" element={
+            <main style={{ padding: "1rem" }}>
+              <p>There's nothing here!</p>
+            </main>
+          } />
+          </Route>
+        </Routes>
+    </BrowserRouter>
   );
 }
 

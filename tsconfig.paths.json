@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@primitives": ["./src/components/primitives"],
+      "@sys/action":["./src/system/action"],
+      "@sys/const":["./src/system/constant/constant"],
+      "@sys/httpCall":["./src/system/httpCall"]
+    }
+  }
+}
