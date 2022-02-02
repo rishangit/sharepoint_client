@@ -8,7 +8,7 @@ const LoginComponent = () => {
   return (
     <div>
       This is login \{USER_LOGIN}
-      <Button {...btnProps}>Login </Button>
+      <Button themeColor='primary'>Login </Button>
     </div>
   );
 };

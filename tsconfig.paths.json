@@ -5,7 +5,9 @@
       "@primitives": ["./src/components/primitives"],
       "@sys/action":["./src/system/action"],
       "@sys/const":["./src/system/constant/constant"],
-      "@sys/httpCall":["./src/system/httpCall"]
+      "@sys/httpCall":["./src/system/httpCall"],
+      "@sys/privertRoute":["./src/system/privertRoute"],
+      "@modules/*":["./src/modules/*"]
     }
   }
 }
