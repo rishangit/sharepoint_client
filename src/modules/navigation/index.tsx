@@ -1,9 +1,35 @@
-import { memo ,FC} from 'react';
-import {NaviWrapper} from './navigation.styled';
+import { memo, FC, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
+import {
+  NaviWrapper,
+  NavigationItem,
+  ItemContainer,
+} from "./navigation.styled";
+import { mainNavigation, MainNavigationItemType } from "./constant";
 
-const NavigationComponent:FC = ()=>{
+const NavigationComponent: FC = () => {
+  const navigate = useNavigate();
 
-    return <NaviWrapper>Main navigation </NaviWrapper>
-}
+  const onNaviClick = useCallback(
+    (url: string) => {
+      navigate(url, { replace: true });
+    },
+    [navigate]
+  );
 
-export default memo(NavigationComponent)
+  return (
+    <NaviWrapper>
+      {mainNavigation().map((navi: MainNavigationItemType) => {
+        return (
+          <NavigationItem>
+            <ItemContainer key={navi.url} onClick={() => onNaviClick(navi.url)}>
+              {navi.text}
+            </ItemContainer>
+          </NavigationItem>
+        );
+      })}
+    </NaviWrapper>
+  );
+};
+
+export default memo(NavigationComponent);

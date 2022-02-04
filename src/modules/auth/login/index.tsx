@@ -1,8 +1,8 @@
-import { ButtonProps, Button } from '@primitives';
+import { ButtonType, Button } from '@primitives';
 import { USER_LOGIN } from '@sys/httpCall';
 
 const LoginComponent = () => {
-  const btnProps: ButtonProps = {
+  const btnProps: ButtonType = {
     themeColor: 'primary',
   };
   return (

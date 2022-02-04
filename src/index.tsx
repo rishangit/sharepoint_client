@@ -7,7 +7,7 @@ import { Provider } from "react-redux";
 import store from "./root/store";
 import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
-import {getTheme} from './theme';
+import {getTheme} from './theme/theme';
 
 
 

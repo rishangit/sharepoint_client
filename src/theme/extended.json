@@ -1,0 +1,27 @@
+ {
+    "padding-sm": {
+        "name": "Padding sm",
+        "type": "number",
+        "value": "0.25rem",
+        "key": "padding-sm"
+    },
+    "padding-md": {
+        "name": "Padding md",
+        "type": "number",
+        "value": "0.5rem",
+        "key": "padding-sm"
+    },
+    "padding-lg": {
+        "name": "Padding lg",
+        "type": "number",
+        "value": "1rem",
+        "key": "padding-sm"
+    },
+    "padding-xl": {
+        "name": "Padding lg",
+        "type": "number",
+        "value": "2rem",
+        "key": "padding-sm"
+    }
+
+}

@@ -3,11 +3,15 @@
     "baseUrl": ".",
     "paths": {
       "@primitives": ["./src/components/primitives"],
+      "@app/common": ["./src/components/common"],
+      "@app/icons": ["./src/components/icons"],
       "@sys/action":["./src/system/action"],
-      "@sys/const":["./src/system/constant/constant"],
+      "@sys/const": ["./src/system/constant/constant"],
+      "@sys/utils":["./src/system/constant/utils"],
       "@sys/httpCall":["./src/system/httpCall"],
       "@sys/privertRoute":["./src/system/privertRoute"],
-      "@modules/*":["./src/modules/*"]
+      "@modules/*":["./src/modules/*"],
+      "@app/const":["./src/constant"]
     }
   }
 }

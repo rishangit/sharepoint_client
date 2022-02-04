@@ -1,19 +1,15 @@
-import { FC } from "react";
 import ManageColumns from './manage';
 import ListComponent from './list';
+import { AppRoutingPath } from "@app/const";
 
 const ColumnRoutes = () => {
   const routes = [
     {
-      path: "new",
+      path: AppRoutingPath.COLUMNS_NEW,
       element: <ManageColumns />,
     },
     {
-      path: "edit",
-      element: <ManageColumns />,
-    },
-    {
-      path: "list",
+      path:AppRoutingPath.COLUMNS_LIST,
       element: <ListComponent />,
     },
   ];

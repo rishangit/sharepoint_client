@@ -1,9 +1,12 @@
-@import url('./custome.css');
+@import url('./theme/custome.css');
 
 .App {
   text-align: center;
 }
 
+a {
+  text-decoration: none;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;

@@ -1,10 +1,16 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const HeaderWrapper = styled.div`
   width: 100%;
-  background-color: yellow;
-  height:80px;
-  position: fixed;
+  height: 80px;
+  display: flex;
+  ${({ theme }) => css`
+    padding: ${theme["padding-sm"]} 0;
+  `}
 `;
 
-export { HeaderWrapper };
+const ActionContainer = styled.div`
+margin-left:auto;
+`
+
+export { HeaderWrapper, ActionContainer };

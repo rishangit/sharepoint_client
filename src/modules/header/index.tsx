@@ -1,8 +1,29 @@
 import { FC, memo } from "react";
-import { HeaderWrapper } from "./header.styled";
+import { HeaderWrapper , ActionContainer} from "./header.styled";
+import { MainTite } from "@app/common";
 
-const HeaderComponent: FC = () => {
-  return <HeaderWrapper>Header</HeaderWrapper>;
+export interface HeaderType {
+  title: string;
+  subTitle?: (string | any);
+  actions?: any;
+  children?: any;
+}
+
+const HeaderComponent: FC<HeaderType> = ({
+  children,
+  title,
+  subTitle,
+  actions,
+}) => {
+  return (
+    <HeaderWrapper>
+      <div>
+        <MainTite>{title}</MainTite>
+        <div>{subTitle}</div>
+      </div>
+      <ActionContainer>{actions}</ActionContainer>
+    </HeaderWrapper>
+  );
 };
 
 export default memo(HeaderComponent);
