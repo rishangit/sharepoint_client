@@ -55,31 +55,15 @@ const FormInput = (fieldRenderProps) => {
           ariaDescribedBy={`${hindId} ${errorId}`}
           {...others}
         />
-        <Hint direction={"end"} style={{ position: "absolute", right: 0 }}>
-          {value.length} / {max}
-        </Hint>
+        {
+          id != 'email' && <Hint direction={"end"} style={{ position: "absolute", right: 0 }}>
+            {value.length} / {max}
+          </Hint>
+        }
         {showHint && <Hint id={hindId}>{hint}</Hint>}
         {showValidationMessage && (
           <Error id={errorId}>{validationMessage}</Error>
         )}
-      </div>
-      <Label
-        editorId={id}
-        editorValid={valid}
-        editorDisabled={disabled}
-        optional={optional}
-      >
-        {label}
-      </Label>
-      <div className={"k-form-field-wrap"}>
-        <Input
-          valid={valid}
-          type={type}
-          id={'email'}
-          disabled={disabled}
-          ariaDescribedBy={`${hindId} ${errorId}`}
-          {...others}
-        />
       </div>
     </FieldWrapper>
   );
@@ -117,9 +101,10 @@ const LoginComponent = () => {
                 component={FormInput}
                 validator={inputValidator}
               />
-                 <Field
+              <Field
                 id={"email"}
                 name={"email"}
+                type={"email"}
                 label={"Email:"}
                 value={formRenderProps.valueGetter("email")}
                 hint={"Hint: Enter your Email here"}
