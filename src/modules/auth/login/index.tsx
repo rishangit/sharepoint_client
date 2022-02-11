@@ -11,8 +11,7 @@ import {
 import { Label, Hint, Error } from "@progress/kendo-react-labels";
 import { Input } from "@progress/kendo-react-inputs";
 import { Button } from "@progress/kendo-react-buttons";
-
-const inputValidator = (value) => (!value ? "Please enter a text." : "");
+import { formElementProps, initialModel } from "./constnat";
 
 const FormInput = (fieldRenderProps) => {
   const {
@@ -55,11 +54,11 @@ const FormInput = (fieldRenderProps) => {
           ariaDescribedBy={`${hindId} ${errorId}`}
           {...others}
         />
-        {
+        {/* {
           id != 'email' && <Hint direction={"end"} style={{ position: "absolute", right: 0 }}>
             {value.length} / {max}
           </Hint>
-        }
+        } */}
         {showHint && <Hint id={hindId}>{hint}</Hint>}
         {showValidationMessage && (
           <Error id={errorId}>{validationMessage}</Error>
@@ -69,60 +68,34 @@ const FormInput = (fieldRenderProps) => {
   );
 };
 
-
-
 const LoginComponent = () => {
-  // const btnProps: ButtonType = {
-  //   themeColor: 'primary',
-  // };
   const max = 20;
   const handleSubmit = (dataItem) => alert(JSON.stringify(dataItem, null, 2));
   return (
-    <div style={{ display: 'flex', justifyContent: 'center' }}>
-      {/* This is login \{USER_LOGIN}
-      <Button themeColor='primary'>Login </Button> */}
+    <div style={{ display: "flex", justifyContent: "center" }}>
       <Form
-        initialValues={{
-          username: "",
-          email: ""
-        }}
+        initialValues={initialModel}
         onSubmit={handleSubmit}
-        render={(formRenderProps) => (
-
-          <FormElement style={{ width: 500, position: "absolute" }}>
-            <fieldset className={"k-form-fieldset"}>
-              <Field
-                id={"username"}
-                name={"username"}
-                label={"Username:"}
-                max={max}
-                value={formRenderProps.valueGetter("username")}
-                hint={"Hint: Enter your text here"}
-                component={FormInput}
-                validator={inputValidator}
-              />
-              <Field
-                id={"email"}
-                name={"email"}
-                type={"email"}
-                label={"Email:"}
-                value={formRenderProps.valueGetter("email")}
-                hint={"Hint: Enter your Email here"}
-                component={FormInput}
-                validator={inputValidator}
-              />
-              <div className="k-form-buttons k-justify-content-end">
-                <Button
-                  themeColor={"primary"}
-                  type={"submit"}
-                  disabled={!formRenderProps.allowSubmit}
-                >
-                  Send
-              </Button>
-              </div>
-            </fieldset>
-          </FormElement>
-        )}
+        render={(formRenderProps) => {
+          const fieldsProps = formElementProps({ formRenderProps,FormInput  });
+          return (
+            <FormElement style={{ width: 500, position: "absolute" }}>
+              <fieldset className={"k-form-fieldset"}>
+                <Field {...fieldsProps["username"]} />
+                <Field {...fieldsProps["email"]} />
+                <div className="k-form-buttons k-justify-content-end">
+                  <Button
+                    themeColor={"primary"}
+                    type={"submit"}
+                    disabled={!formRenderProps.allowSubmit}
+                  >
+                    Send
+                  </Button>
+                </div>
+              </fieldset>
+            </FormElement>
+          );
+        }}
       />
     </div>
   );

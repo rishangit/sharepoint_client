@@ -1,24 +1,30 @@
-import * as Yup from 'yup';
+import { LogingModel } from "./types";
 
-export const validation = Yup.object().shape({
-  mobile: Yup.string()
-    .required('Email is required'),
-    // .email('Invalid email address'),
-  password: Yup.string().required('Password is required'),
-});
+const inputValidator = (value) => (!value ? "Please enter a text." : "");
 
-export const formElement = ({ register, errors }:any) => ({
-  email: {
-    placeholder: 'Email',
-    name: 'mobile',
-    ref: register,
-    error: errors['mobile'],
+export const initialModel: LogingModel = {
+  username: "",
+  email: "",
+};
+
+export const formElementProps = ({ formRenderProps, FormInput }: any) => ({
+  username: {
+    id: "username",
+    name: "username",
+    label: "Username",
+    hint: "Hint: Enter your text here",
+    value: formRenderProps.valueGetter("username"),
+    component: FormInput,
+    validator: inputValidator,
+    max:20,
   },
-  password: {
-    placeholder: 'Password',
-    name: 'password',
-    type: 'password',
-    ref: register,
-    error: errors['password'],
+  email: {
+    id: "email",
+    name: "email",
+    label: "Email",
+    hint: "Hint: Enter your Email here",
+    value: formRenderProps.valueGetter("email"),
+    component: FormInput,
+    validator: inputValidator,
   },
 });
