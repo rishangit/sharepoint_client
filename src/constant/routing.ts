@@ -10,4 +10,5 @@ export const AppRoutingFullPath = {
     COLUMNS:'columns',
     COLUMNS_LIST:'columns/list', 
     COLUMNS_NEW:'columns/new', 
+    TABLE_LIST:'tables/list', 
 }

@@ -1,6 +1,11 @@
 import styled, { css } from "styled-components";
 import { ShadeColor } from "@sys/utils";
 
+interface NaviWrapperProps {
+  seleced: any;
+  theme: any;
+}
+
 const NaviWrapper = styled.div`
   width: 350px;
   height: 100vh;
@@ -9,7 +14,7 @@ const NaviWrapper = styled.div`
   flex-direction: column;
 `;
 
-const NavigationItem = styled.div`
+const NavigationItem = styled.div<NaviWrapperProps>`
   width: 100%;
   min-height: 50px;
   display: flex;
@@ -22,6 +27,13 @@ const NavigationItem = styled.div`
       color: ${theme["headings-text"]};
     }
   `}
+
+  ${({ seleced, theme }) =>
+    seleced &&
+    css`
+      background-color: ${ShadeColor(theme.primary, 160)};
+      color: ${theme.primary};
+    `}}
 `;
 
 const ItemContainer = styled.div`

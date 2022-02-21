@@ -6,6 +6,7 @@
       "@app/common": ["./src/components/common"],
       "@app/icons": ["./src/components/icons"],
       "@sys/action":["./src/system/action"],
+      "@sys/types":["./src/system/types"],
       "@sys/const": ["./src/system/constant/constant"],
       "@sys/utils":["./src/system/constant/utils"],
       "@sys/httpCall":["./src/system/httpCall"],

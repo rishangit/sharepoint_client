@@ -4,11 +4,13 @@
   "private": true,
   "homepage": "./",
   "dependencies": {
+    "@progress/kendo-drawing": "^1.16.2",
     "@progress/kendo-licensing": "^1.2.1",
     "@progress/kendo-react-buttons": "^5.0.1",
     "@progress/kendo-react-dialogs": "^5.0.1",
     "@progress/kendo-react-form": "^5.0.1",
     "@progress/kendo-react-inputs": "^5.0.1",
+    "@progress/kendo-react-intl": "^5.0.1",
     "@progress/kendo-react-labels": "^5.0.1",
     "@progress/kendo-theme-bootstrap": "^5.1.1",
     "@testing-library/jest-dom": "^5.16.1",
@@ -64,6 +66,6 @@
     "babel-preset-expo": "^9.0.2",
     "babel-preset-react-app": "^10.0.1",
     "eslint": "7.32.0",
-    "react-app-rewired": "^2.1.11"
+    "react-app-rewired": "^2.2.1"
   }
 }

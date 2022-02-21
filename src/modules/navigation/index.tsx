@@ -6,13 +6,19 @@ import {
   ItemContainer,
 } from "./navigation.styled";
 import { mainNavigation, MainNavigationItemType } from "./constant";
+import { setNavigation } from "@sys/action";
+import { rootState } from "@sys/types";
+import { useDispatch, useSelector } from "react-redux";
 
 const NavigationComponent: FC = () => {
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
+  const { navigation:{selectedId}} = useSelector((state: rootState) => state.systemReducer);
+  console.log("selectedId", selectedId);
   const onNaviClick = useCallback(
-    (url: string) => {
+    ({ url, id }: any) => {
       navigate(url, { replace: true });
+      dispatch(setNavigation(id));
     },
     [navigate]
   );
@@ -21,8 +27,8 @@ const NavigationComponent: FC = () => {
     <NaviWrapper>
       {mainNavigation().map((navi: MainNavigationItemType) => {
         return (
-          <NavigationItem key={navi.url}>
-            <ItemContainer  onClick={() => onNaviClick(navi.url)}>
+          <NavigationItem key={navi.url} seleced = {selectedId === navi.id ? true :undefined} >
+            <ItemContainer onClick={() => onNaviClick(navi)}>
               {navi.text}
             </ItemContainer>
           </NavigationItem>
