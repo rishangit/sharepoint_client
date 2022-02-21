@@ -21,8 +21,8 @@ const NavigationComponent: FC = () => {
     <NaviWrapper>
       {mainNavigation().map((navi: MainNavigationItemType) => {
         return (
-          <NavigationItem>
-            <ItemContainer key={navi.url} onClick={() => onNaviClick(navi.url)}>
+          <NavigationItem key={navi.url}>
+            <ItemContainer  onClick={() => onNaviClick(navi.url)}>
               {navi.text}
             </ItemContainer>
           </NavigationItem>

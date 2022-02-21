@@ -54,11 +54,11 @@ const FormInput = (fieldRenderProps) => {
           ariaDescribedBy={`${hindId} ${errorId}`}
           {...others}
         />
-        {/* {
-          id != 'email' && <Hint direction={"end"} style={{ position: "absolute", right: 0 }}>
+        {
+          id != 'password' && <Hint direction={"end"} style={{ position: "absolute", right: 0 }}>
             {value.length} / {max}
           </Hint>
-        } */}
+        }
         {showHint && <Hint id={hindId}>{hint}</Hint>}
         {showValidationMessage && (
           <Error id={errorId}>{validationMessage}</Error>
@@ -69,7 +69,7 @@ const FormInput = (fieldRenderProps) => {
 };
 
 const LoginComponent = () => {
-  const max = 20;
+
   const handleSubmit = (dataItem) => alert(JSON.stringify(dataItem, null, 2));
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
@@ -77,17 +77,17 @@ const LoginComponent = () => {
         initialValues={initialModel}
         onSubmit={handleSubmit}
         render={(formRenderProps) => {
-          const fieldsProps = formElementProps({ formRenderProps,FormInput  });
+          const fieldsProps = formElementProps({ formRenderProps, FormInput });
           return (
             <FormElement style={{ width: 500, position: "absolute" }}>
               <fieldset className={"k-form-fieldset"}>
                 <Field {...fieldsProps["username"]} />
-                <Field {...fieldsProps["email"]} />
+                <Field {...fieldsProps["password"]} />
                 <div className="k-form-buttons k-justify-content-end">
                   <Button
+                  {...fieldsProps["submitBtn"]}
                     themeColor={"primary"}
                     type={"submit"}
-                    disabled={!formRenderProps.allowSubmit}
                   >
                     Send
                   </Button>

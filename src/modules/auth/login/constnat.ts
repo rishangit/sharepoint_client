@@ -4,7 +4,7 @@ const inputValidator = (value) => (!value ? "Please enter a text." : "");
 
 export const initialModel: LogingModel = {
   username: "",
-  email: "",
+  password: "",
 };
 
 export const formElementProps = ({ formRenderProps, FormInput }: any) => ({
@@ -16,15 +16,21 @@ export const formElementProps = ({ formRenderProps, FormInput }: any) => ({
     value: formRenderProps.valueGetter("username"),
     component: FormInput,
     validator: inputValidator,
-    max:20,
+    max: 20,
   },
-  email: {
-    id: "email",
-    name: "email",
-    label: "Email",
-    hint: "Hint: Enter your Email here",
-    value: formRenderProps.valueGetter("email"),
+  password: {
+    id: "password",
+    type: "password",
+    name: "password",
+    label: "Password",
+    hint: "Hint: Enter your Password here",
+    value: formRenderProps.valueGetter("password"),
     component: FormInput,
     validator: inputValidator,
   },
+  submitBtn: {
+    themeColor: "primary",
+    disabled: !formRenderProps.allowSubmit,
+    type: "submit"
+  }
 });
