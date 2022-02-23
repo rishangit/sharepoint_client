@@ -5,11 +5,13 @@ export interface PopupWindowProps {
   showOverLay?: boolean;
   onClose?: Function;
   children?:any;
+  title : string,
 }
 
 const PopupWindow: FC<PopupWindowProps> = ({
   showOverLay = true,
   onClose,
+  title,
   children,
 }) => {
 
@@ -24,6 +26,7 @@ const PopupWindow: FC<PopupWindowProps> = ({
         onClose={() => onCloseWindow()}
         initialHeight={600}
         initialWidth={800}
+        title={title}
       >
         {children}
       </Window>

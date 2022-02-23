@@ -12,6 +12,7 @@ const SelectType = ({ setModel }) => {
       })}
     </div>
   );
+
 };
 
 export default SelectType;

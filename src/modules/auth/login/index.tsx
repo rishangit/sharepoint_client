@@ -11,7 +11,7 @@ import {
 import { Label, Hint, Error } from "@progress/kendo-react-labels";
 import { Input } from "@progress/kendo-react-inputs";
 import { Button } from "@progress/kendo-react-buttons";
-import { formElementProps, initialModel } from "./constnat";
+import { formElementProps, initialModel } from "./constant";
 
 const FormInput = (fieldRenderProps) => {
   const {

@@ -21,7 +21,7 @@ const ListComponent: FC = () => {
       <HeaderComponent {...header}></HeaderComponent>
       {showManage && (
         <>
-          <PopupWindow onClose={()=>setShowManage(false)}>
+          <PopupWindow onClose={()=>setShowManage(false)} title = {'Add Column'}>
             <ManageColumns />
           </PopupWindow>
         </>
