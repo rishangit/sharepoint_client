@@ -5,11 +5,16 @@ import { Form, FormRenderProps, FormElement, Field } from "@progress/kendo-react
 import { Button } from "@progress/kendo-react-buttons"
 import { FormInput, FormRadioGroup, FormDropDownList } from "@modules/columns/manage/form.column.components";
 import { fieldElementProps } from "@modules/columns/manage/constant";
+import { useDispatch } from "react-redux";
+import { COLUMN_DATA } from "@modules/columns/action";
 
 
 const ColumnDetails = ({ model }) => {
-  const onsubmit = (data: any) => {
-    console.log('form-data', data ,'this is model', model)
+  const dispatch = useDispatch()
+  const onsubmit = (data: any , formRenderProps) => {
+  
+    dispatch({ type: COLUMN_DATA, payload: { data, model } })
+    formRenderProps.onForm
   }
   const fliedProps: any = fieldElementProps({ FormInput, FormRadioGroup, FormDropDownList })
   if (model.type === ColumnType.TEXT) return (

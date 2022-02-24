@@ -1,8 +1,8 @@
-const radioData: Array<any> = [
+const radioData: Array<Object> = [
   { label: "Short Text", value: "shortText" },
   { label: "Long Text", value: "longText" },
 ];
-const numberTypes: Array<string> = [
+const numberTypes: Array<String> = [
   "Short Number",
   "Long Number",
 ];
@@ -22,8 +22,9 @@ export const fieldElementProps = ({ FormRadioGroup, FormInput, FormDropDownList 
     name: 'textType',
     data: radioData,
     component: FormRadioGroup,
-    defaultValue: radioData[0].value,
+    // defaultValue: radioData[0].value,
     hint: 'Hint : Enter the Column Type',
+    validator: inputValidator,
   },
   dropDown: {
     id: "numberType",
