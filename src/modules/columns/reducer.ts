@@ -1,16 +1,16 @@
-import { COLUMN_DATA } from "@modules/columns/action";
+import { SET_COLUMN_DATA } from "@modules/columns/action";
 
-const initialState : {columnType : Array<Object>} = {
-    columnType: []
+const initialState : {dataList : Array<Object>} = {
+    dataList: []
 }
 
 const columnReducer : any = (state = initialState, action) => {
     const { type, payload } = action
 
     switch (type) {
-        case COLUMN_DATA: return {
+        case SET_COLUMN_DATA: return {
             ...state,
-            columnType : [...state.columnType, {...payload.data,...payload.model}]
+            dataList : [...state.dataList, {...payload}]
         }
         default: return state
     }

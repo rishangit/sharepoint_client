@@ -2,11 +2,12 @@ import * as React from "react";
 import { FieldRenderProps, FieldWrapper } from "@progress/kendo-react-form";
 import { Input, RadioGroup, NumericTextBox } from "@progress/kendo-react-inputs";
 import { Label, Error, Hint } from "@progress/kendo-react-labels";
-import {DropDownList} from "@progress/kendo-react-dropdowns";
+import { DropDownList } from "@progress/kendo-react-dropdowns";
+
 const hintData: Function = (hintId, hint) => <Hint id={hintId}>{hint}</Hint>
 const errorData: Function = (errorId, validationMessage) => <Error id={errorId}>{validationMessage}</Error>
 
- 
+
 export const FormInput = (fieldRenderProps: FieldRenderProps) => {
   const {
     validationMessage,
@@ -41,7 +42,7 @@ export const FormInput = (fieldRenderProps: FieldRenderProps) => {
       >
         {label}
       </Label>
-      <div className={"k-form-field-wrap"}>
+      <div className={"k-form-field-wrap"} style={{ width: '50%' }}>
         <Input
           valid={valid}
           type={type}
