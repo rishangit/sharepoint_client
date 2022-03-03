@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { Window, Dialog } from "@progress/kendo-react-dialogs";
+import { PopupShade } from "./window.styled";
 
 export interface PopupWindowProps {
   showOverLay?: boolean;
@@ -21,7 +22,7 @@ const PopupWindow: FC<PopupWindowProps> = ({
 
   return (
     <>
-      {showOverLay && <div className="k-overlay"></div>}
+      {showOverLay && <PopupShade></PopupShade>}
       <Window
         onClose={() => onCloseWindow()}
         initialHeight={600}

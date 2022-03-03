@@ -16,14 +16,14 @@ const dateTypes: Array<String> = [
 
 const inputValidator = (value) => (!value ? "* required" : "");
 
-export const fieldElementProps = ({ model, FormRadioGroup, FormInput, FormDropDownList }) => ({
+const fieldElementProps = ({ model, FormRadioGroup, FormInput, FormDropDownList }) => ({
   columnName: {
     id: 'name',
     label: 'Name',
     name: 'name',
     component: FormInput,
     hint: 'Hint : Enter the Column Name',
-    validator: inputValidator
+    validator: inputValidator,
   },
   radio: {
     id: 'textType',
@@ -45,9 +45,9 @@ export const fieldElementProps = ({ model, FormRadioGroup, FormInput, FormDropDo
   }
 })
 
-export const columnTypeProps = [
+const columnTypeProps = [
   {
-    type: 'TEXT',
+    type: ColumnType.TEXT,
     name: 'Text',
     desc: 'Small or long text like title or description',
   },
@@ -82,4 +82,6 @@ export const columnTypeProps = [
     desc: 'Yes or no, 1 or 0, true or false',
   },
 ]
+
+export { fieldElementProps , columnTypeProps}
 

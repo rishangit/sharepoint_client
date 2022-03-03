@@ -21,11 +21,11 @@ const ColumnDetails = ({ model }) => {
       <h2>Add new {model.type} Field</h2>
       <Form onSubmit={onsubmit} render={
         (formRenderProps: FormRenderProps) => (
-          <FormElement>
+          <FormElement >
             <Field
               {...fliedProps['columnName']}
             />
-            {model.type === ColumnType.TEXT && <Field
+            {model.type === ColumnType.TEXT && <Field 
               {...fliedProps['radio']}
             />}
             <Button

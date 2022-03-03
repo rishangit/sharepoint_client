@@ -20,3 +20,10 @@ export interface columnReducer {
     }
   ]
 }
+// Styled Component Column Props
+export interface columnThread {
+  span? : string;
+}
+export interface columnData {
+  flexDirection? : string;
+}
