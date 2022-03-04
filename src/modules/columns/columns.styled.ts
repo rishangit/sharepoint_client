@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 import { ShadeColor } from "@sys/utils";
-import { columnThread, columnData } from "@modules/columns/types";
+import { columnThread, columnData, columnIcon } from "@modules/columns/types";
 
 export const ColumnsWrapper = styled.div`
     display:flex;
@@ -34,27 +34,27 @@ export const ColumnItem = styled.div`
     cursor : pointer;
         ${({ theme }) => css`
             border : 1px solid ${theme.secondary};
-        &:hover {
+        :hover {
             background-color: ${ShadeColor(theme.primary, 160)};
         }
     `}
 `
 
-export const ColumnData : any = styled.div`
+export const ColumnData: any = styled.div<columnData>`
     display : flex;
     margin : 0;
     padding .5em;
-        ${({flexDirection} : columnData) => css`
+        ${({ flexDirection }) => css`
             flex-direction : ${flexDirection};
     `}
 `
 
-export const ColumnIcon = styled.div`
-    padding : .2em;
+export const ColumnIcon = styled.div<columnIcon>`
+    padding : .1em .6em .1em .6em;
     margin : .5em;
     width: fit-content;
-        ${({ theme }) => css`
-            background-color : ${ShadeColor(theme.primary, 160)};
+        ${({ theme , setBorder }) => setBorder && css`
+            background-color : ${ShadeColor(theme.primary, 180)};
             border : 1px solid ${theme.primary};
             color : ${theme.primary};
             border-radius : ${theme['border-radius']};

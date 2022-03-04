@@ -3,13 +3,13 @@ import SelectType from "./selectType";
 import ColumnDetails from './columDetails';
 import { Column } from '../types';
 
-const ManageColumns: FC = () => {
+const ManageColumns: any = ({ onClose } : any) => {
   const [step, setStep] = useState(0);
   const [model, setModel] = useState<Column>();
 
   useEffect(() => {
     console.log('model', model)
-    if (model?.type) {
+    if (model ?.type) {
       setStep(1);
     }
   }, [JSON.stringify(model)])
@@ -20,7 +20,7 @@ const ManageColumns: FC = () => {
       {
         {
           0: <SelectType setModel={setModel} />,
-          1: <ColumnDetails model={model} />,
+          1: <ColumnDetails model={model} onClose={onClose} />,
         }[step]
       }
     </div>

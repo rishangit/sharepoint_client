@@ -4,6 +4,8 @@
   "private": true,
   "homepage": "./",
   "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^6.0.0",
+    "@fortawesome/react-fontawesome": "^0.1.17",
     "@progress/kendo-drawing": "^1.16.2",
     "@progress/kendo-licensing": "^1.2.1",
     "@progress/kendo-react-buttons": "^5.0.1",

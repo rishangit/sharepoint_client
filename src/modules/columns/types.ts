@@ -27,3 +27,7 @@ export interface columnThread {
 export interface columnData {
   flexDirection? : string;
 }
+export interface columnIcon {
+  setBorder? : any;
+  theme : any;
+}
