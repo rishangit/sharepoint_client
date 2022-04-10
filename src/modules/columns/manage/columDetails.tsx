@@ -17,9 +17,9 @@ const ColumnDetails = ({ model, onClose }) => {
   }
   const fliedProps: Object = fieldElementProps({ model, FormInput, FormRadioGroup, FormDropDownList })
 
-  const columnTextFileds = () => (
+  const ColumnTextFileds = () => (
     <div>
-      <h2>Add new {model.type} Field</h2>
+        <h2>Add new {model.type} Field</h2>
       <Form onSubmit={onsubmit} render={
         (formRenderProps: FormRenderProps) => (
           <FormElement >
@@ -35,14 +35,14 @@ const ColumnDetails = ({ model, onClose }) => {
               disabled={!formRenderProps.allowSubmit}
             >
               Submit
-        </Button>
+            </Button>
           </FormElement>
         )}
       />
     </div>)
-  const columnNumberFileds = () => (
+  const ColumnNumberFileds = () => (
     <div>
-      <h2>Add new {model.type} Field</h2>
+        <h2>Add new {model.type} Field</h2>
       <Form onSubmit={onsubmit} render={
         (formRenderProps: FormRenderProps) => (
           <FormElement>
@@ -58,7 +58,7 @@ const ColumnDetails = ({ model, onClose }) => {
               disabled={!formRenderProps.allowSubmit}
             >
               Submit
-          </Button>
+            </Button>
           </FormElement>
         )
       } />
@@ -71,18 +71,17 @@ const ColumnDetails = ({ model, onClose }) => {
     case ColumnType.PASSWORD:
     case ColumnType.BOOLEAN:
       return (
-        columnTextFileds()
+        <ColumnTextFileds />
       );
     case ColumnType.NUMBER:
     case ColumnType.DATE:
       return (
-        columnNumberFileds()
+        <ColumnNumberFileds />
       )
     default: return (
       <div>This Column Type</div>
     )
   }
-
-
 }
+
 export default ColumnDetails;

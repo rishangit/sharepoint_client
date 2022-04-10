@@ -1,13 +1,12 @@
 import { FC, memo, useState } from "react";
 import { useSelector } from "react-redux";
-import { faPen, faTrashCan } from '@fortawesome/free-solid-svg-icons'
 
 import { NewButton, PopupWindow } from "@app/common";
-import { ColumnsWrapper, ColumnTable, ColumnTableThreads, ColumnTableItem, ColumnIcon } from "../columns.styled";
+import * as SC from "../columns.styled";
 import HeaderComponent, { HeaderType } from "@modules/header";
 import ManageColumns from "../manage";
-import { IconText } from "@modules/columns/common/column.icons";
-import { IconFa } from "@app/icons";
+import { ColumnIcon } from "@modules/columns/common/column.icons";
+import { IconDelete , IconEdit } from "@app/icons";
 
 
 const ListComponent: FC = () => {
@@ -29,8 +28,8 @@ const ListComponent: FC = () => {
   }
 
   return (
-    <ColumnsWrapper>
-      <HeaderComponent {...header}></HeaderComponent>
+    <SC.ColumnsWrapper>
+      <HeaderComponent {...header}/>
       {showManage && (
         <>
           <PopupWindow onClose={() => setShowManage(false)} title={'Add Column'}>
@@ -38,45 +37,45 @@ const ListComponent: FC = () => {
           </PopupWindow>
         </>
       )}
-      {(columnReducer.dataList.length !== 0) && <ColumnTable>
-        <ColumnTableItem>
-          <ColumnTableThreads span='4'>
+      {(columnReducer.dataList.length !== 0) && <SC.ColumnTable>
+        <SC.ColumnTableItem>
+          <SC.ColumnTableThreads span='4'>
             <h6>
               Name
             </h6>
-          </ColumnTableThreads>
-          <ColumnTableThreads>
+          </SC.ColumnTableThreads>
+          <SC.ColumnTableThreads>
             <h6>
               Type
             </h6>
-          </ColumnTableThreads>
-        </ColumnTableItem>
+          </SC.ColumnTableThreads>
+        </SC.ColumnTableItem>
         {
           columnReducer.dataList.map(
-            (raw, index) => (
-              <ColumnTableItem key={index}>
-                <ColumnTableThreads span='4'>
-                  <IconText keyIcon={raw.type} />
+            ({type, name} , index) => (
+              <SC.ColumnTableItem key={index}>
+                <SC.ColumnTableThreads span='4'>
+                  <ColumnIcon type={type} />
                     <h6 style={{margin : 0}}>
-                      {raw.name}
+                      {name}
                     </h6>
-                </ColumnTableThreads>
-                <ColumnTableThreads span='7'>
-                  {raw.type}
-                </ColumnTableThreads>
-                <ColumnTableThreads span='1'>
-                  <ColumnIcon>
-                    <IconFa icon={faPen} />
-                  </ColumnIcon>
-                  <ColumnIcon>
-                    <IconFa icon={faTrashCan} />
-                  </ColumnIcon>
-                </ColumnTableThreads>
-              </ColumnTableItem>
+                </SC.ColumnTableThreads>
+                <SC.ColumnTableThreads span='7'>
+                  {type}
+                </SC.ColumnTableThreads>
+                <SC.ColumnTableThreads span='1'>
+                  <SC.ColumnIcon>
+                    <IconEdit />
+                  </SC.ColumnIcon>
+                  <SC.ColumnIcon>
+                    <IconDelete />
+                  </SC.ColumnIcon>
+                </SC.ColumnTableThreads>
+              </SC.ColumnTableItem>
             ))}
-      </ColumnTable>
+      </SC.ColumnTable>
       }
-    </ColumnsWrapper>
+    </SC.ColumnsWrapper>
   );
 };
 

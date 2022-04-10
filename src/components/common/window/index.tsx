@@ -22,7 +22,7 @@ const PopupWindow: FC<PopupWindowProps> = ({
 
   return (
     <>
-      {showOverLay && <PopupShade></PopupShade>}
+      {showOverLay && <PopupShade/>}
       <Window
         onClose={() => onCloseWindow()}
         initialHeight={600}

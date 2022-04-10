@@ -49,7 +49,7 @@ export const ColumnData: any = styled.div<columnData>`
     `}
 `
 
-export const ColumnIcon = styled.div<columnIcon>`
+export const ColumnIcon : any = styled.div<columnIcon>`
     padding : .1em .6em .1em .6em;
     margin : .5em;
     width: fit-content;
