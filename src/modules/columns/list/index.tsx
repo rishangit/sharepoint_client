@@ -31,13 +31,9 @@ const ListComponent: FC = () => {
   return (
     <ColumnsWrapper>
       <HeaderComponent {...header}></HeaderComponent>
-      {showManage && (
-        <>
-          <PopupWindow onClose={() => setShowManage(false)} title={'Add Column'}>
-            <ManageColumns onClose={popupWindowClose} />
-          </PopupWindow>
-        </>
-      )}
+      <PopupWindow show={showManage} onClose={() => setShowManage(false)} title={'Add Column'}>
+        <ManageColumns onClose={popupWindowClose} />
+      </PopupWindow>
       {(columnReducer.dataList.length !== 0) && <ColumnTable>
         <ColumnTableItem>
           <ColumnTableThreads span='4'>
