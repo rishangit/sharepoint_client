@@ -47,15 +47,20 @@ const ListComponent: FC = () => {
               Name
             </h6>
           </SC.ColumnTableThreads>
-          <SC.ColumnTableThreads>
+          <SC.ColumnTableThreads span='3'>
             <h6>
               Type
+            </h6>
+          </SC.ColumnTableThreads>
+          <SC.ColumnTableThreads span='4'>
+            <h6>
+              Gruop
             </h6>
           </SC.ColumnTableThreads>
         </SC.ColumnTableItem>
         {
           columnReducer.dataList.map(
-            ({type, name} , index) => (
+            ({type, name, groupType} , index) => (
               <SC.ColumnTableItem key={index}>
                 <SC.ColumnTableThreads span='4'>
                   <ColumnIcon type={type} />
@@ -63,8 +68,11 @@ const ListComponent: FC = () => {
                       {name}
                     </h6>
                 </SC.ColumnTableThreads>
-                <SC.ColumnTableThreads span='7'>
+                <SC.ColumnTableThreads span='3'>
                   {type}
+                </SC.ColumnTableThreads>
+                <SC.ColumnTableThreads span='4'>
+                  {groupType}
                 </SC.ColumnTableThreads>
                 <SC.ColumnTableThreads span='1'>
                   <SC.ColumnIcon>
