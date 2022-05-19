@@ -14,7 +14,7 @@ const NaviWrapper = styled.div`
   flex-direction: column;
 `;
 
-const NavigationItem = styled.div<NaviWrapperProps>`
+const NavigationItem : any = styled.div<NaviWrapperProps>`
   width: 100%;
   min-height: 50px;
   display: flex;

@@ -18,6 +18,7 @@
           "@sys/httpCall":["src/system/httpCall"],
           "@sys/privertRoute":["src/system/privertRoute"],
           "@modules/*":["src/modules/*"],
+          "@mod/columns":["./src/modules/columns/"],
           "@app/const":["src/constant"]
         }
       }

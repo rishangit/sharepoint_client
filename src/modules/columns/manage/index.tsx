@@ -3,7 +3,7 @@ import SelectType from "./selectType";
 import ColumnDetails from './columDetails';
 import { Column } from '../types';
 
-const ManageColumns: FC = () => {
+const ManageColumns: any = ({ onClose } : any) => {
   const [step, setStep] = useState(0);
   const [model, setModel] = useState<Column>();
 
@@ -20,7 +20,7 @@ const ManageColumns: FC = () => {
       {
         {
           0: <SelectType setModel={setModel} />,
-          1: <ColumnDetails model={model} />,
+          1: <ColumnDetails model={model} onClose={onClose} />,
         }[step]
       }
     </div>
