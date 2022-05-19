@@ -138,7 +138,7 @@ export const FormDropDownList = (fieldRenderProps: FieldRenderProps) => {
         {label}
       </Label>
       <DropDownList
-        style={{width: '50%'}}
+        style={{ width: '50%' }}
         ariaLabelledBy={labelId}
         ariaDescribedBy={`${hintId} ${errorId}`}
         ref={editorRef}

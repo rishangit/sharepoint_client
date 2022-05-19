@@ -1,4 +1,4 @@
-import { SET_GROUP_DATA } from "./action";
+import { SET_GROUP_DATA,  REMOVE_GROUP_DATA } from "./action";
 // {dataList : Array<Object>}
 const initialState : any = {
     groupList: []
@@ -11,6 +11,10 @@ const groupReducer : any = (state = initialState, action) => {
         case SET_GROUP_DATA: return {
             ...state,
             groupList : [...state.groupList,...payload],
+        }
+        case  REMOVE_GROUP_DATA: return {
+            ...state,
+            groupList : [...payload],
         }
         default: return state
     }

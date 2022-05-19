@@ -1,5 +1,5 @@
 import { FC, memo, useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import { NewButton, PopupWindow } from "@app/common";
 import * as SC from "../columns.styled";
@@ -7,12 +7,14 @@ import HeaderComponent, { HeaderType } from "@modules/header";
 import ManageColumns from "../manage";
 import { ColumnIcon } from "@modules/columns/common/column.icons";
 import { IconDelete , IconEdit } from "@app/icons";
+import { deleteColumnData } from "@modules/columns/action";
 
 
 const ListComponent: FC = () => {
+  const dispatch = useDispatch()
   const { columnReducer }: any = useSelector(state => state)
-  console.log(columnReducer)
   const [showManage, setShowManage] = useState(false);
+  
   const onclick = () => {
     setShowManage(true);
   };
@@ -22,6 +24,11 @@ const ListComponent: FC = () => {
     subTitle: "this is columns sub title",
     actions: <NewButton onClick={() => onclick()} />,
   };
+
+  const deleteColumn = (name) => {
+    const newColumns = columnReducer.dataList.filter((column: any) => column.name !== name) 
+    dispatch(deleteColumnData(newColumns))
+  }
 
   const popupWindowClose = () => {
     setShowManage(false)
@@ -63,7 +70,7 @@ const ListComponent: FC = () => {
                   <SC.ColumnIcon>
                     <IconEdit />
                   </SC.ColumnIcon>
-                  <SC.ColumnIcon>
+                  <SC.ColumnIcon onClick={() => deleteColumn(name)}>
                     <IconDelete />
                   </SC.ColumnIcon>
                 </SC.ColumnTableThreads>
