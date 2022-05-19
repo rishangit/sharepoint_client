@@ -29,14 +29,10 @@ const ListComponent: FC = () => {
 
   return (
     <SC.ColumnsWrapper>
-      <HeaderComponent {...header}/>
-      {showManage && (
-        <>
-          <PopupWindow onClose={() => setShowManage(false)} title={'Add Column'}>
-            <ManageColumns onClose={popupWindowClose} />
-          </PopupWindow>
-        </>
-      )}
+      <HeaderComponent {...header}></HeaderComponent>
+      <PopupWindow show={showManage} onClose={() => setShowManage(false)} title={'Add Column'}>
+        <ManageColumns onClose={popupWindowClose} />
+      </PopupWindow>
       {(columnReducer.dataList.length !== 0) && <SC.ColumnTable>
         <SC.ColumnTableItem>
           <SC.ColumnTableThreads span='4'>

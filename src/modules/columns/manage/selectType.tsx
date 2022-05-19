@@ -1,7 +1,8 @@
 import { ColumnType, Column } from "../types";
-import * as SC from "@modules/columns/columns.styled";
+import * as SC from "../columns.styled";
 import { columnTypeProps } from "@modules/columns/manage/constant";
 import { ColumnIcon } from "@modules/columns/common/column.icons";
+import "bootstrap/dist/css/bootstrap.min.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const SelectType = ({ setModel }) => {
@@ -33,7 +34,6 @@ const SelectType = ({ setModel }) => {
       </SC.ColumnCategory>
     </>
   );
-
 };
 
 export default SelectType;

@@ -11,7 +11,7 @@ const ColumnRoutes = () => {
     {
       path:AppRoutingPath.COLUMNS_LIST,
       element: <ListComponent />,
-    },
+    }
   ];
   return routes;
 };

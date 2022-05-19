@@ -1,6 +1,6 @@
 import { FC, memo } from "react";
 import { HeaderWrapper , ActionContainer} from "./header.styled";
-import { MainTite } from "@app/common";
+import { MainTitle } from "@app/common";
 
 export interface HeaderType {
   title: string;
@@ -18,7 +18,7 @@ const HeaderComponent: FC<HeaderType> = ({
   return (
     <HeaderWrapper>
       <div>
-        <MainTite>{title}</MainTite>
+        <MainTitle>{title}</MainTitle>
         <div>{subTitle}</div>
       </div>
       <ActionContainer>{actions}</ActionContainer>

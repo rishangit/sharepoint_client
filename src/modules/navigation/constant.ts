@@ -18,5 +18,10 @@ export const mainNavigation = (): Array<MainNavigationItemType> => {
       id: 'tables',
       url: AppRoutingFullPath.TABLE_LIST,
     },
+    {
+      text: 'Groups',
+      id: 'groups',
+      url: AppRoutingFullPath.GROUPS_LIST,
+    },
   ];
 };

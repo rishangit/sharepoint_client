@@ -9,7 +9,7 @@ const ManageColumns: any = ({ onClose } : any) => {
 
   useEffect(() => {
     console.log('model', model)
-    if (model ?.type) {
+    if (model?.type) {
       setStep(1);
     }
   }, [JSON.stringify(model)])
