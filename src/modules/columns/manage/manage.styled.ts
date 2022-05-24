@@ -14,6 +14,9 @@ export const ManageWindowContainer = styled.div`
     form{
         padding-left: 2rem;
     }
+    select{
+        z-index: 1003 !important;
+    }
 `;
 
 export const ButtonContainer = styled.div`
