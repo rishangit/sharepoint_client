@@ -1,11 +1,14 @@
 export enum ColumnType {
   TEXT = "TEXT",
-  NUMBER = "NUMBER",
   RICHTEXT = "RICHTEXT",
+  NUMBER = "NUMBER",
   EMAIL = "EMAIL",
   DATE = "DATE",
   PASSWORD = "PASSWORD",
   BOOLEAN = "BOOLEAN",
+  LOOKUP = "LOOKUP",
+  MEDIA = "MEDIA",
+  CALCULATED = "CALCULATED",
 }
 
 export interface Column {

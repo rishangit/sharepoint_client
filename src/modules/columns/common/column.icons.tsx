@@ -7,7 +7,10 @@ import {
   faListOl,
   faUnlock,
   faCalendar,
-  faToggleOn
+  faToggleOn,
+  faColumns,
+  faFileImage,
+  faFileExcel
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ColumnType } from '@modules/columns/types';
@@ -38,6 +41,15 @@ export const ColumnIcon: FC<columnIconProps> = ({ type }) => {
       break;
     case ColumnType.DATE:
       icon = faCalendar;
+      break;
+    case ColumnType.LOOKUP:
+      icon = faColumns;
+      break;
+    case ColumnType.MEDIA:
+      icon = faFileImage;
+      break;
+    case ColumnType.CALCULATED:
+      icon = faFileExcel;
       break;
     default:
       icon = faSpellCheck;

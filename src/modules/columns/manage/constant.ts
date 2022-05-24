@@ -20,9 +20,7 @@ const dateTypes: Array<String> = [
 const inputValidator = (value) => (!value ? "* required" : "");
 
 
-const fieldElementProps = ({ model, FormRadioGroup, FormInput, FormDropDownList }) => {
-  const { groupList } = useSelector(getGruopList)
-  const gruopData: Array<String> = groupList.map(({ name }) => name)
+const fieldElementProps = ({ model, FormRadioGroup, FormInput, FormDropDownList, FormTextArea }) => {
   return (
     {
       columnName: {
@@ -50,6 +48,7 @@ const fieldElementProps = ({ model, FormRadioGroup, FormInput, FormDropDownList 
         component: FormDropDownList,
         data: model.type === ColumnType.NUMBER && numberTypes || model.type === ColumnType.DATE && dateTypes,
         validator: inputValidator,
+        hint: 'Hint : Select the Number Type',
       },
       GroupdropDown: {
         id: "groupType",
@@ -57,6 +56,33 @@ const fieldElementProps = ({ model, FormRadioGroup, FormInput, FormDropDownList 
         label: "Group Type",
         component: FormDropDownList,
         validator: inputValidator,
+        hint: 'Hint : Select the Group Type',
+      },
+      LookUpdropDown: {
+        id: "lookUpdropDown",
+        name: "lookUpdropDown",
+        label: "Look Up",
+        component: FormDropDownList,
+        validator: inputValidator,
+        hint: 'Hint : Select the Look Up Type',
+      },
+      calculatedTextArea: {
+        id: "calculatedTextArea",
+        name: "calculatedTextArea",
+        label: "Insert Formula",
+        component: FormTextArea,
+        hint: 'Hint : Type your Formula',
+        validator: inputValidator,
+        max: 200,
+      },
+      mediaTextArea: {
+        id: "mediaTextArea",
+        name: "mediaTextArea",
+        label: "Insert Media Link",
+        component: FormTextArea,
+        hint: 'Hint : Insert your Link',
+        validator: inputValidator,
+        max: 200,
       }
     })
 }
@@ -73,14 +99,14 @@ const columnTypeProps = [
     desc: 'A rich text editor with formatting options',
   },
   {
-    type: ColumnType.EMAIL,
-    name: 'Email',
-    desc: 'Email field with validations format',
-  },
-  {
     type: ColumnType.NUMBER,
     name: 'Number',
     desc: 'Numbers (integer, float, decimal)',
+  },
+  {
+    type: ColumnType.EMAIL,
+    name: 'Email',
+    desc: 'Email field with validations format',
   },
   {
     type: ColumnType.PASSWORD,
@@ -97,6 +123,21 @@ const columnTypeProps = [
     name: 'Boolean ',
     desc: 'Yes or no, 1 or 0, true or false',
   },
+  {
+    type: ColumnType.LOOKUP,
+    name: 'Look Up',
+    desc: 'Add Column Name to Look Up',
+  },
+  {
+    type: ColumnType.MEDIA,
+    name: 'Media',
+    desc: 'Add Media Link',
+  },
+  {
+    type: ColumnType.CALCULATED,
+    name: 'Calculated Formula',
+    desc: 'Add your Calculated Formula here',
+  }
 ]
 
 export { fieldElementProps, columnTypeProps }
