@@ -8,10 +8,18 @@ const PopupShade = styled.div`
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 10001;
+    z-index: 800 !improtant;
         ${ ({ theme }) => css`
             background-color: ${ShadeColor(theme.primary, 180)}
         `}
 `;
 
-export { PopupShade };
+const Popwindow = styled.div`
+        .k-window{
+
+            z-index: 800 !improtant;
+        }
+
+`
+
+export { PopupShade, Popwindow };

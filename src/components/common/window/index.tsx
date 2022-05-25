@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Window, Dialog } from "@progress/kendo-react-dialogs";
-import { PopupShade } from "./window.styled";
+import { PopupShade, Popwindow } from "./window.styled";
 
 export interface PopupWindowProps {
   showOverLay?: boolean;
@@ -28,14 +28,17 @@ const PopupWindow: FC<PopupWindowProps> = ({
       {show && (
         <>
           {showOverLay && <PopupShade/>}
-          <Window
-            onClose={() => onCloseWindow()}
-            initialHeight={initialHeight ? initialHeight : 550}
-            initialWidth={800}
-            title={title}
-          >
-            {children}
-          </Window>
+          <Popwindow className="popwindow">
+            <Window
+              onClose={() => onCloseWindow()}
+              initialHeight={initialHeight ? initialHeight : 550}
+              initialWidth={800}
+              title={title}
+            >
+              {children}
+            </Window>
+          </Popwindow>
+
         </>
       )}
     </>

@@ -13,7 +13,7 @@ const SelectType = ({ setModel }) => {
     <>
       <SC.ColumnTitle>
         <h4>
-          Select a Field for your Column Type
+        Select a field type for your Column
         </h4>
       </SC.ColumnTitle>
       <SC.ColumnCategory>

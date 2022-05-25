@@ -14,14 +14,20 @@ export const mainNavigation = (): Array<MainNavigationItemType> => {
       url: AppRoutingFullPath.COLUMNS_LIST,
     },
     {
-      text: 'Tables',
+      text: 'Column Groups',
+      id: 'groups',
+      url: AppRoutingFullPath.GROUPS_LIST,
+    },
+    {
+      text: 'Content Types',
       id: 'tables',
       url: AppRoutingFullPath.TABLE_LIST,
     },
     {
-      text: 'Groups',
-      id: 'groups',
-      url: AppRoutingFullPath.GROUPS_LIST,
+      text: 'Lists',
+      id: 'tables',
+      url: AppRoutingFullPath.TABLE_LIST,
     },
+
   ];
 };
