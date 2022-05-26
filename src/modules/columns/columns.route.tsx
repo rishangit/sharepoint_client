@@ -5,11 +5,11 @@ import { AppRoutingPath } from "@app/const";
 const ColumnRoutes = () => {
   const routes = [
     {
-      path: AppRoutingPath.COLUMNS_NEW,
+      path: AppRoutingPath.COLUMN_NEW,
       element: <ManageColumns />,
     },
     {
-      path:AppRoutingPath.COLUMNS_LIST,
+      path:AppRoutingPath.COLUMN_LIST,
       element: <ListComponent />,
     }
   ];

@@ -17,10 +17,14 @@ export interface columnReducer{
 export interface groupReducer{
   groupList: any[]
   }
+export interface contentTypesReducer{
+  contentTypesList: any[]
+  }
 
 export interface rootState {
     systemReducer:systemReducer,
     authReducer: authReducer,
     columnReducer: columnReducer,
     groupReducer: groupReducer
+    contentTypesReducer: contentTypesReducer
   }

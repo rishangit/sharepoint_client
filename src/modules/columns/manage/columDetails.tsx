@@ -12,7 +12,7 @@ import {
   FormRadioGroup,
   FormDropDownList,
   FormTextArea
-} from "@modules/columns/manage/inputComponents";
+} from "input-component";
 import { ColumnType } from "../types"
 import { fieldElementProps, columnTypeProps } from "@modules/columns/manage/constant";
 import { SET_COLUMN_DATA } from "@modules/columns/action";

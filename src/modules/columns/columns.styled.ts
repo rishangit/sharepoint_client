@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 import { ShadeColor } from "@sys/utils";
 import { columnThread, columnData, columnIcon } from "@modules/columns/types";
+import { Table, TableIcon, TableItem, TableThreads } from 'sys-styled';
 
 export const ColumnsWrapper = styled.div`
     display:flex;
@@ -49,38 +50,15 @@ export const ColumnData: any = styled.div<columnData>`
     `}
 `
 
-export const ColumnIcon : any = styled.div<columnIcon>`
+export const ColumnIcon: any = styled.div<columnIcon>`
     padding : .1em .6em .1em .6em;
     margin : .5em;
     width: fit-content;
-        ${({ theme , setBorder }) => setBorder && css`
+        ${({ theme, setBorder }) => setBorder && css`
             background-color : ${ShadeColor(theme.primary, 180)};
             border : 1px solid ${theme.primary};
             color : ${theme.primary};
             border-radius : ${theme['border-radius']};
     `}
 `
-
-// Table Category View Components
-export const ColumnTable = styled.div`
-    margin: 1em;
-    background-color : white;
-    border-radius : .4em;
-    padding : 1.5em;
-`
-
-export const ColumnTableItem = styled.div`
-    font-size: small;
-    display : grid;
-    grid-template-columns : repeat(12, 1fr);
-        ${ ({ theme }) => css`
-            border-bottom : 1px solid ${theme.secondary}
-    `}
-`
-
-export const ColumnTableThreads: any = styled.div`
-    grid-column: ${({ span }: columnThread) => (span ? `span ${span} / auto` : 'span 6 / auto')};
-    align-items : center;
-    display : flex;
-    padding : .5em;
-`
+export { Table, TableIcon, TableItem, TableThreads }

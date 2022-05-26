@@ -3,8 +3,8 @@ import { useDispatch } from "react-redux";
 
 import { Button } from "@progress/kendo-react-buttons"
 import { Form, FormRenderProps, FormElement, Field } from "@progress/kendo-react-form"
-import { fieldElementProps } from '@modules/groups/addGroup/constant';
-import { FormInput } from '@modules/groups/addGroup/form.group.component';
+import { fieldElementProps } from './constant';
+import { FormInput } from 'input-component';
 import { setGroupData } from "@modules/groups/action";
 import * as  SC from './addGroup.styled'
 

@@ -19,7 +19,9 @@
           "@sys/privertRoute":["src/system/privertRoute"],
           "@modules/*":["src/modules/*"],
           "@mod/columns":["./src/modules/columns/"],
-          "@app/const":["src/constant"]
+          "@app/const":["src/constant"],
+          "input-component": ["./src/components/formElement"],
+          "sys-styled": ["./src/theme/styled"]
         }
       }
     ]

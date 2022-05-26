@@ -10,7 +10,7 @@ import { groupList } from '../constant';
 import { IconDelete, IconEdit } from "@app/icons";
 import { deleteGroupData } from "@modules/groups/action";
 import { getGruopList } from "@modules/groups/selector";
-import GroupAdder from "@modules/groups/addGroup";
+import GroupAdder from "./addGroup";
 
 
 const GroupListComponent: FC = () => {
@@ -39,7 +39,7 @@ const GroupListComponent: FC = () => {
 
   return (
     <SC.GroupsWrapper>
-      <HeaderComponent {...header}></HeaderComponent>
+      <HeaderComponent {...header} />
       <PopupWindow
         show={showManage}
         onClose={() => setShowManage(false)}
@@ -49,31 +49,31 @@ const GroupListComponent: FC = () => {
         <GroupAdder onClose={popupWindowClose} />
       </PopupWindow>
       {groupList.length > 0 &&
-        <SC.GroupTable>
-          <SC.GroupTableItem>
-            <SC.GroupTableThreads span='4'>
+        <SC.Table>
+          <SC.TableItem>
+            <SC.TableThreads span='4'>
               <h6>
                 Name
               </h6>
-            </SC.GroupTableThreads>
-          </SC.GroupTableItem>
+            </SC.TableThreads>
+          </SC.TableItem>
           {groupList.map(({ name }: any, index) =>
-            <SC.GroupTableItem key={index}>
-              <SC.GroupTableThreads span='4'>
+            <SC.TableItem key={index}>
+              <SC.TableThreads span='4'>
                 <h6>
                   {name}
                 </h6>
-              </SC.GroupTableThreads>
-              <SC.GroupTableThreads span='7'>
-              </SC.GroupTableThreads>
-              <SC.GroupTableThreads span='1' >
-                <SC.GroupIcon onClick={() => deleteGroups(name)}>
+              </SC.TableThreads>
+              <SC.TableThreads span='7'>
+              </SC.TableThreads>
+              <SC.TableThreads span='1' >
+                <SC.TableIcon onClick={() => deleteGroups(name)}>
                   <IconDelete />
-                </SC.GroupIcon>
-              </SC.GroupTableThreads>
-            </SC.GroupTableItem>
+                </SC.TableIcon>
+              </SC.TableThreads>
+            </SC.TableItem>
           )}
-        </SC.GroupTable>}
+        </SC.Table>}
     </SC.GroupsWrapper>
   );
 };

@@ -20,14 +20,14 @@ export const mainNavigation = (): Array<MainNavigationItemType> => {
     },
     {
       text: 'Content Types',
-      id: 'tables',
-      url: AppRoutingFullPath.TABLE_LIST,
+      id: 'contentTypes',
+      url: AppRoutingFullPath.CONTENT_TYPES_LIST,
     },
     {
       text: 'Lists',
       id: 'tables',
-      url: AppRoutingFullPath.TABLE_LIST,
-    },
+      url: AppRoutingFullPath.TABLES_LIST,
+    },  
 
   ];
 };

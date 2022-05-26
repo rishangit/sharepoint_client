@@ -40,51 +40,51 @@ const ListComponent: FC = () => {
       <PopupWindow show={showManage} onClose={() => setShowManage(false)} title={'Add Column'}>
         <ManageColumns onClose={popupWindowClose} />
       </PopupWindow>
-      {(columnReducer.dataList.length !== 0) && <SC.ColumnTable>
-        <SC.ColumnTableItem>
-          <SC.ColumnTableThreads span='4'>
+      {(columnReducer.dataList.length !== 0) && <SC.Table>
+        <SC.TableItem>
+          <SC.TableThreads span='4'>
             <h6>
               Name
             </h6>
-          </SC.ColumnTableThreads>
-          <SC.ColumnTableThreads span='3'>
+          </SC.TableThreads>
+          <SC.TableThreads span='3'>
             <h6>
               Type
             </h6>
-          </SC.ColumnTableThreads>
-          <SC.ColumnTableThreads span='4'>
+          </SC.TableThreads>
+          <SC.TableThreads span='4'>
             <h6>
               Gruop
             </h6>
-          </SC.ColumnTableThreads>
-        </SC.ColumnTableItem>
+          </SC.TableThreads>
+        </SC.TableItem>
         {
           columnReducer.dataList.map(
             ({type, name, groupType} , index) => (
-              <SC.ColumnTableItem key={index}>
-                <SC.ColumnTableThreads span='4'>
+              <SC.TableItem key={index}>
+                <SC.TableThreads span='4'>
                   <ColumnIcon type={type} />
                     <h6 style={{margin : 0}}>
                       {name}
                     </h6>
-                </SC.ColumnTableThreads>
-                <SC.ColumnTableThreads span='3'>
+                </SC.TableThreads>
+                <SC.TableThreads span='3'>
                   {type}
-                </SC.ColumnTableThreads>
-                <SC.ColumnTableThreads span='4'>
+                </SC.TableThreads>
+                <SC.TableThreads span='4'>
                   {groupType}
-                </SC.ColumnTableThreads>
-                <SC.ColumnTableThreads span='1'>
-                  <SC.ColumnIcon>
+                </SC.TableThreads>
+                <SC.TableThreads span='1'>
+                  <SC.TableIcon>
                     <IconEdit />
-                  </SC.ColumnIcon>
-                  <SC.ColumnIcon onClick={() => deleteColumn(name)}>
+                  </SC.TableIcon>
+                  <SC.TableIcon onClick={() => deleteColumn(name)}>
                     <IconDelete />
-                  </SC.ColumnIcon>
-                </SC.ColumnTableThreads>
-              </SC.ColumnTableItem>
+                  </SC.TableIcon>
+                </SC.TableThreads>
+              </SC.TableItem>
             ))}
-      </SC.ColumnTable>
+      </SC.Table>
       }
     </SC.ColumnsWrapper>
   );

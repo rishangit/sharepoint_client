@@ -27,6 +27,9 @@ export interface columnReducer {
 export interface columnThread {
   span? : string;
 }
+export interface tableBg {
+  secondary? : boolean;
+}
 export interface columnData {
   flexDirection? : string;
 }

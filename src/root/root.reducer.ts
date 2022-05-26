@@ -4,8 +4,16 @@ import authReducer from '../modules/auth/reducer';
 import columnReducer from '../modules/columns/reducer';
 import systemReducer from '../system/reducer'
 import groupReducer from '@modules/groups/reducer';
+import contentTypesReducer from '@modules/contentTypes/contentTypes.reducer';
+// import { rootState } from '@sys/types';
 
 
-const rootReducer = combineReducers({ authReducer, systemReducer , columnReducer, groupReducer });
+const rootReducer = combineReducers({ 
+        authReducer, 
+        systemReducer , 
+        columnReducer, 
+        groupReducer, 
+        contentTypesReducer
+    });
 
 export default rootReducer;

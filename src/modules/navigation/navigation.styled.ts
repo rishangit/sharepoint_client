@@ -31,8 +31,8 @@ const NavigationItem : any = styled.div<NaviWrapperProps>`
   ${({ seleced, theme }) =>
     seleced &&
     css`
-      background-color: ${ShadeColor(theme.primary, 160)};
-      color: ${theme.primary};
+      background-color: ${theme.primary};
+      color: white !important;
     `}}
 `;
 
