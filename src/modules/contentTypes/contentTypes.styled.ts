@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
-import { columnThread, columnData, columnIcon, tableBg } from "@modules/columns/types";
+import { ContentTableItemProps} from "@modules/columns/types";
 import { ShadeColor } from "@sys/utils";
-import { Table, TableIcon, TableItem, TableThreads } from 'sys-styled';
+import { Table, TableIcon, TableItem, TableThreads } from 'app-styled';
 
 export const ContentTypesWrapper = styled.div`
     display:flex;
@@ -49,12 +49,12 @@ export const ContentTypeRadioWrapper = styled.div`
     } 
     .k-radio-item{
         ${({ theme }) => css`
-            border: 2px solid ${ShadeColor(theme.primary, 120)};
+            border: 2px solid ${theme.secondary};
             border-radius : ${theme['border-radius']};
             padding: 1rem 1rem;
             margin-right: 1rem;
             &:hover{
-                background-color: ${ShadeColor(theme.primary, 160)};
+                background-color: ${theme.secondary};
             }
         `}
     }
@@ -63,4 +63,15 @@ export const ContentTypeRadioWrapper = styled.div`
     }  
 `;
 
+export const ItemRenderWrapper = styled.div`
+    display: flex;
+    align-items: center;
+`;
+
+export const ContentTableItem: any = styled(TableItem)<ContentTableItemProps>`
+${ ({ theme, border }) =>border && css`
+    border-bottom : none
+`}
+`;
 export { Table, TableIcon, TableItem, TableThreads }
+

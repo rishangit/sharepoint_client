@@ -5,16 +5,16 @@ import { NewButton, PopupWindow } from "@app/common";
 import * as SC from "../columns.styled";
 import HeaderComponent, { HeaderType } from "@modules/header";
 import ManageColumns from "../manage";
-import { ColumnIcon } from "@modules/columns/common/column.icons";
-import { IconDelete , IconEdit } from "@app/icons";
+import { IconDelete, IconEdit } from "@app/icons";
 import { deleteColumnData } from "@modules/columns/action";
+import { TableDataIcon } from 'app-iconwithname'
 
 
 const ListComponent: FC = () => {
   const dispatch = useDispatch()
   const { columnReducer }: any = useSelector(state => state)
   const [showManage, setShowManage] = useState(false);
-  
+
   const onclick = () => {
     setShowManage(true);
   };
@@ -26,7 +26,7 @@ const ListComponent: FC = () => {
   };
 
   const deleteColumn = (name) => {
-    const newColumns = columnReducer.dataList.filter((column: any) => column.name !== name) 
+    const newColumns = columnReducer.dataList.filter((column: any) => column.name !== name)
     dispatch(deleteColumnData(newColumns))
   }
 
@@ -60,14 +60,9 @@ const ListComponent: FC = () => {
         </SC.TableItem>
         {
           columnReducer.dataList.map(
-            ({type, name, groupType} , index) => (
+            ({ type, name, groupType }, index) => (
               <SC.TableItem key={index}>
-                <SC.TableThreads span='4'>
-                  <ColumnIcon type={type} />
-                    <h6 style={{margin : 0}}>
-                      {name}
-                    </h6>
-                </SC.TableThreads>
+                <TableDataIcon span='4' type={type} name={name} />
                 <SC.TableThreads span='3'>
                   {type}
                 </SC.TableThreads>

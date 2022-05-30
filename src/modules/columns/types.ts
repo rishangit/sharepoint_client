@@ -37,3 +37,15 @@ export interface columnIcon {
   setBorder? : any;
   theme : any;
 }
+
+export interface ContentTableItemProps {
+  border? : any;
+  theme?: any;
+}
+
+export interface TableThreadsProps {
+  bgColor? : any;
+  theme?: any;
+  span?; any;
+}
+

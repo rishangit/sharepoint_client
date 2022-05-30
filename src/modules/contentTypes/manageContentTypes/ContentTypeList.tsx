@@ -1,6 +1,7 @@
 import React, { memo, useState } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { Button } from "@progress/kendo-react-buttons"
+import {AutoCompleteChangeEvent} from "@progress/kendo-react-dropdowns";
 import { Form, FormRenderProps, FormElement, Field } from "@progress/kendo-react-form"
 
 import {
@@ -11,26 +12,43 @@ import { contentTypeProps } from './constant'
 import { IconDelete } from '@app/icons';
 import { setContentTypeData } from '@modules/contentTypes/contentTypes.action';
 import { getDataList } from '@modules/columns/columns.selector';
+import { ColumnIcon, TableDataIcon } from 'app-iconwithname';
 
 const ContentTypeList = ({ onClose, model }) => {
     const dispatch = useDispatch()
     const [autoCompleteData, setAutoCompleteData] = useState([])
-    const {dataList} = useSelector(getDataList)
-    const autoCompleteDropDownData = dataList.map(({name})=> name);
+    const { dataList } = useSelector(getDataList)
+    const autoCompleteDropDownData = dataList.map(({ name, type }) => ({ name, type }));
     const fliedProps: Object = contentTypeProps({ FormAutoCompleteDropDownList })
-
     const onsubmit = (data: any) => {
-        const selectedValue = data ?.contentAutoComplete;
-        setAutoCompleteData([...autoCompleteData, { type: selectedValue }])
+        console.log('data',data)
+        const selectedValue = data?.contentAutoComplete;
+        const updatedData = autoCompleteDropDownData.filter((data: any)=> data.name ==selectedValue)
+        setAutoCompleteData([...autoCompleteData, ...updatedData])
     }
     console.log(autoCompleteData)
-    const onDeleteColumn = (type) => {
-        setAutoCompleteData(autoCompleteData.filter((column) => column.type != type))
+    const onDeleteColumn = (name) => {
+        setAutoCompleteData(autoCompleteData.filter((column) => column.name != name))
     }
     const saveData = () => {
         dispatch(setContentTypeData({ model, autoCompleteData }))
         onClose()
     }
+    const getIconType = (name) => {
+        const getType = dataList.filter((data)=> data.name == name)
+        console.log
+    }
+    const itemRender = (li, itemProps) => {
+
+        const itemChildren= (
+            <SC.ItemRenderWrapper>
+                <ColumnIcon type={itemProps.dataItem.type} />
+                {itemProps.dataItem.name}
+            </SC.ItemRenderWrapper>
+        );
+        return React.cloneElement(li, li.props, itemChildren);
+    };
+
     return (
         <SC.ContentTypeWindowContainer>
             <h2>Add new Content Type</h2>
@@ -41,6 +59,8 @@ const ContentTypeList = ({ onClose, model }) => {
                             <Field
                                 {...fliedProps['contentAutoComplete']}
                                 data={autoCompleteDropDownData}
+                                itemRender={itemRender}
+                                textField={"name"}
                             />
                             <Button
                                 themeColor={"primary"}
@@ -52,8 +72,8 @@ const ContentTypeList = ({ onClose, model }) => {
                         </SC.AutoCompleteContainer>
                     </FormElement>
                 )}
-            />: 
-             'You Need to Add Columns First'
+            /> :
+                'You Need to Add Columns First'
             }
             {autoCompleteData.length > 0 && <SC.Table secondary>
                 <SC.TableItem>
@@ -63,15 +83,13 @@ const ContentTypeList = ({ onClose, model }) => {
                         </h6>
                     </SC.TableThreads>
                 </SC.TableItem>
-                {autoCompleteData.map(({ type }, index) =>
+                {autoCompleteData.map(({ name, type }, index) =>
                     <SC.TableItem key={index}>
-                        <SC.TableThreads span='6'>
-                            {type}
-                        </SC.TableThreads>
+                        <TableDataIcon span='6' name={name} type={type}/>
                         <SC.TableThreads span='5'>
                         </SC.TableThreads>
                         <SC.TableThreads span='1'>
-                            <SC.TableIcon onClick={() => onDeleteColumn(type)}>
+                            <SC.TableIcon onClick={() => onDeleteColumn(name)}>
                                 <IconDelete />
                             </SC.TableIcon>
                         </SC.TableThreads>

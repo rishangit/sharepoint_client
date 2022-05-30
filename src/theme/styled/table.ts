@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { columnThread, columnData, columnIcon, tableBg } from "@modules/columns/types";
+import { columnThread, columnData, columnIcon, tableBg, TableThreadsProps } from "@modules/columns/types";
 import { ShadeColor } from "@sys/utils";
 
 export const Table: any  = styled.div<tableBg>`
@@ -19,15 +19,20 @@ export const TableItem = styled.div`
     display : grid;
     grid-template-columns : repeat(12, 1fr);
         ${ ({ theme }) => css`
-            border-bottom : 1px solid ${ShadeColor(theme.primary, 160)}
+            border-bottom : 1px solid ${theme.secondary}
     `}
 `
 
-export const TableThreads: any = styled.div`
+export const TableThreads: any = styled.div<TableThreadsProps>`
     grid-column: ${({ span }: columnThread) => (span ? `span ${span} / auto` : 'span 6 / auto')};
     align-items : center;
     display : flex;
     padding : .5em;
+    ${({theme, bgColor})=> bgColor && css`
+        background-color: ${theme.secondary};
+        border-radius : .4em;
+        border: 1px solid white;
+    `}
 `
 export const TableIcon : any = styled.div<columnIcon>`
     padding : .1em .6em .1em .6em;

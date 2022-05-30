@@ -6,19 +6,18 @@ import { NewButton, PopupWindow } from "@app/common";
 import * as SC from '../contentTypes.styled';
 import ManageContentTypes from '../manageContentTypes'
 import { getContentTypeList } from '@modules/contentTypes/contentTypes.selector';
-import { IconDelete, IconEdit } from '@app/icons';
 import { deleteContentTypeData } from '@modules/contentTypes/contentTypes.action';
+import ContentTypeTableData from '@modules/contentTypes/contentType/contentTypeTableData';
 
 const ContentTpyesListComponent: FC = () => {
     const [showManage, setShowManage] = useState(false);
     const dispatch = useDispatch()
     const { contentTypesList } = useSelector(getContentTypeList)
-
     const onclick = () => {
         setShowManage(true);
     };
     const onDeleteContentType = (model) => {
-        const removeData = contentTypesList.filter((contentType :any)=> contentType.model != model )
+        const removeData = contentTypesList.filter((contentType: any) => contentType.model != model)
         dispatch(deleteContentTypeData(removeData))
         console.log('removeData', removeData)
     };
@@ -48,24 +47,8 @@ const ContentTpyesListComponent: FC = () => {
                         </h6>
                     </SC.TableThreads>
                 </SC.TableItem>
-                {contentTypesList.map(({ model }, index) =>
-                    <SC.TableItem key={index}>
-                        <SC.TableThreads span='6'>
-                            <h6>
-                                {model.contentTypeName}
-                            </h6>
-                        </SC.TableThreads>
-                        <SC.TableThreads span='5'>
-                        </SC.TableThreads>
-                        <SC.TableThreads span='1'>
-                            <SC.TableIcon >
-                                <IconEdit />
-                            </SC.TableIcon>
-                            <SC.TableIcon onClick={()=>onDeleteContentType(model)}>
-                                <IconDelete />
-                            </SC.TableIcon>
-                        </SC.TableThreads>
-                    </SC.TableItem>
+                {contentTypesList.map(({ model, autoCompleteData }) =>
+                    <ContentTypeTableData model={model} data={autoCompleteData} onDelete={onDeleteContentType} />
                 )}
             </SC.Table>}
         </SC.ContentTypesWrapper>

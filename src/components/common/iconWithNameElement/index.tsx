@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import * as SC from '../columns.styled';
+import * as SC from './iconWithNameElement.styled';
 import {
   faSpellCheck,
   faAt,
@@ -10,14 +10,14 @@ import {
   faToggleOn,
   faColumns,
   faFileImage,
-  faFileExcel
+  faFileExcel,
+  faCodeFork
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { columnIconProps, tableDataIconProps } from 'app-interface'
 import { ColumnType } from '@modules/columns/types';
 
-interface columnIconProps {
-  type: ColumnType
-}
+
 export const ColumnIcon: FC<columnIconProps> = ({ type }) => {
   let icon;
   switch (type) {
@@ -51,6 +51,9 @@ export const ColumnIcon: FC<columnIconProps> = ({ type }) => {
     case ColumnType.CALCULATED:
       icon = faFileExcel;
       break;
+    case 'CONTENT':
+      icon = faCodeFork;
+      break;
     default:
       icon = faSpellCheck;
   }
@@ -60,4 +63,19 @@ export const ColumnIcon: FC<columnIconProps> = ({ type }) => {
     </SC.ColumnIcon>
   )
 };
+
+export const TableDataIcon: FC<tableDataIconProps> = ({span, type, name, children, bgColor}) => {
+  // console.log('children', props)
+  return (
+    // 
+    <SC.TableThreads span={span} bgColor={bgColor}>
+      <ColumnIcon type={type} />
+      <h6 style={{ margin: 0 }}>
+        {name}
+      </h6>
+      {children}
+    </SC.TableThreads>
+  )
+}
+
 

@@ -21,7 +21,9 @@
           "@mod/columns":["./src/modules/columns/"],
           "@app/const":["src/constant"],
           "input-component": ["./src/components/formElement"],
-          "sys-styled": ["./src/theme/styled"]
+          "app-styled": ["./src/theme/styled"],
+          "app-interface": ["./src/components/interface"],     
+          "app-iconwithname": ["./src/components/common/iconWithNameElement"]
         }
       }
     ]

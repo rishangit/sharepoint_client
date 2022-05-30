@@ -1,7 +1,7 @@
 import { ColumnType, Column } from "../types";
 import * as SC from "../columns.styled";
 import { columnTypeProps } from "@modules/columns/manage/constant";
-import { ColumnIcon } from "@modules/columns/common/column.icons";
+import { ColumnIcon } from 'app-iconwithname';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 

@@ -41,7 +41,7 @@ const AddContentTypes = ({ setModel }) => {
                                     type={"submit"}
                                     disabled={!formRenderProps.allowSubmit}
                                 >
-                                    Submit
+                                    Next
                             </Button>
                             </SC.ButtonContainer>
                         </FormElement>
