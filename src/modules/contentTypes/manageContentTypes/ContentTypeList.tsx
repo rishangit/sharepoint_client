@@ -17,9 +17,12 @@ import { ColumnIcon, TableDataIcon } from 'app-iconwithname';
 const ContentTypeList = ({ onClose, model }) => {
     const dispatch = useDispatch()
     const [autoCompleteData, setAutoCompleteData] = useState([])
+
     const { dataList } = useSelector(getDataList)
+
     const autoCompleteDropDownData = dataList.map(({ name, type }) => ({ name, type }));
     const fliedProps: Object = contentTypeProps({ FormAutoCompleteDropDownList })
+    
     const onsubmit = (data: any) => {
         console.log('data',data)
         const selectedValue = data?.contentAutoComplete;

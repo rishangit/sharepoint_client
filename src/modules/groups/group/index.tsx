@@ -19,7 +19,7 @@ const GroupListComponent: FC = () => {
   const { groupList } = useSelector(getGruopList);
 
   const onclick = () => {
-    setShowManage(true);
+    setShowManage(true);  
   };
 
   const deleteGroups = (name) => {

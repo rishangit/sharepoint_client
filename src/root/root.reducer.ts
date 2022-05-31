@@ -5,6 +5,7 @@ import columnReducer from '../modules/columns/reducer';
 import systemReducer from '../system/reducer'
 import groupReducer from '@modules/groups/reducer';
 import contentTypesReducer from '@modules/contentTypes/contentTypes.reducer';
+import tablesReducer from '@modules/tables/tables.reducer';
 // import { rootState } from '@sys/types';
 
 
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
         systemReducer , 
         columnReducer, 
         groupReducer, 
-        contentTypesReducer
+        contentTypesReducer,
+        tablesReducer
     });
 
 export default rootReducer;

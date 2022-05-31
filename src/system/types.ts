@@ -20,6 +20,9 @@ export interface groupReducer{
 export interface contentTypesReducer{
   contentTypesList: any[]
   }
+export interface tablesReducer{
+  TablesList: any[]
+  }
 
 export interface rootState {
     systemReducer:systemReducer,
@@ -27,4 +30,5 @@ export interface rootState {
     columnReducer: columnReducer,
     groupReducer: groupReducer
     contentTypesReducer: contentTypesReducer
+    tablesReducer: tablesReducer
   }
