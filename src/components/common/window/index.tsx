@@ -9,6 +9,7 @@ export interface PopupWindowProps {
   onClose?: Function;
   children?: any;
   title: string;
+  height?: any;
 }
 
 const PopupWindow: FC<PopupWindowProps> = ({
@@ -18,6 +19,7 @@ const PopupWindow: FC<PopupWindowProps> = ({
   onClose,
   title,
   children,
+  height
 }) => {
   const onCloseWindow = () => {
     onClose && onClose();
@@ -34,6 +36,7 @@ const PopupWindow: FC<PopupWindowProps> = ({
               initialHeight={initialHeight ? initialHeight : 550}
               initialWidth={800}
               title={title}
+              height={height}
             >
               {children}
             </Window>

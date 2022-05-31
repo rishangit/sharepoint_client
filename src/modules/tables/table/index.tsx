@@ -13,7 +13,7 @@ import ManageTableComponent from "../manageTable";
 
 const AddTableListComponent = () => {
     const [showManage, setShowManage] = useState(false);
-
+    const [height, setHeight] = useState(400);
     const header: HeaderType = {
         title: "Table Lists",
         subTitle: "this is Table Lists sub title",
@@ -21,7 +21,9 @@ const AddTableListComponent = () => {
     }
     const onclick = () =>{
         setShowManage(!showManage)
+        setHeight(400)
     }
+
     return (
         <SC.TableListWrapper>
             <HeaderComponent {...header}/>
@@ -29,9 +31,10 @@ const AddTableListComponent = () => {
                       show={showManage}
                       onClose={() => setShowManage(false)}
                       title={'Add Groups'}
-                      initialHeight={400}
+                      initialHeight={height}
+                      height={height}
              >
-             <ManageTableComponent onClose={onclick}/>
+             <ManageTableComponent onClose={onclick} setHeight={setHeight}/>
              </PopupWindow>
         </SC.TableListWrapper>
     )

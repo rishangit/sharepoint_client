@@ -78,6 +78,14 @@ export const ContentTypeRadioWrapper = styled.div`
     }  
 `;
 
+export const TableSubTypeTitle = styled.h4`
+    margin-top: 1.5rem;
+    padding-bottom: .5rem;
+    ${ ({ theme }) => css`
+    border-bottom : 1px solid ${theme.secondary}
+    `}
+`;
+
 export const ItemRenderWrapper = styled.div`
     display: flex;
     align-items: center;

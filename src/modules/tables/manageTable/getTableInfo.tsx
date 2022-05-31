@@ -9,7 +9,7 @@ import { tableInfoProps } from './constant'
 import { getColumnsList, getContentTypeList } from '@modules/tables/tables.selector';
 import { ColumnIcon } from 'app-iconwithname';
 
-const GetTableInfo = ({ model, onClose }) => {
+const GetTableInfo = ({ model, onClose, setHeight }) => {
     const [tableData,setTableData] = useState([])
     const [selectedValue,setSelectedValue] = useState('')
     const fliedProps: Object = tableInfoProps({ FormAutoCompleteDropDownList, FormRadioGroup})
@@ -21,12 +21,14 @@ const GetTableInfo = ({ model, onClose }) => {
 
     const onsubmit = (data: Object) => {
         setTableData([...tableData, data])
+        console.log('data', data)
     }
     const selectTableType = ({value}: any) => {
         setSelectedValue(value)
-        // setTableData([...tableData, data])
+        setHeight(600)
+        console.log(value)
     }
-    // console.log('final Data',tableData )
+    // console.log('setInitialHeight',setInitialHeight() )
     const itemRenderColumn = (li, itemProps) => {
         const itemChildren = (
             <SC.ItemRenderWrapper>
@@ -48,7 +50,7 @@ const GetTableInfo = ({ model, onClose }) => {
     };
     return (
         <SC.TableInfoWindowContainer>
-            <h2>Add new Content Type</h2>
+            <h2>Add new Table Types</h2>
             <Form render={
                 (formRenderProps: FormRenderProps) => (
                     <FormElement >
@@ -61,7 +63,8 @@ const GetTableInfo = ({ model, onClose }) => {
                     </FormElement>
                 )}
             />
-            {/* <h2>Add new Content Type</h2>
+            {selectedValue === 'contentType' ? columnData.length > 0 ? <>
+            <SC.TableSubTypeTitle>Add new Content Type</SC.TableSubTypeTitle>
             <Form onSubmit={onsubmit} render={
                 (formRenderProps: FormRenderProps) => (
                     <FormElement >
@@ -72,7 +75,6 @@ const GetTableInfo = ({ model, onClose }) => {
                                 textField={'name'}
                                 itemRender={itemRenderColumn}
                             />
-                        </SC.AutoCompleteContainer>
                             <Button
                                 themeColor={"primary"}
                                 type={"submit"}
@@ -80,10 +82,12 @@ const GetTableInfo = ({ model, onClose }) => {
                             >
                                 Add
                             </Button>
+                        </SC.AutoCompleteContainer>
                     </FormElement>
-                )}
-            />
-            <h2>Add new Column Type</h2>
+                )}/>
+            </> : 'You need to add contentTypes first' : ''}
+            {selectedValue === 'columnType' ? contentTypeData.length > 0 ? <>
+            <SC.TableSubTypeTitle>Add new Column Type</SC.TableSubTypeTitle>
             <Form onSubmit={onsubmit} render={
                 (formRenderProps: FormRenderProps) => (
                     <FormElement >
@@ -94,7 +98,7 @@ const GetTableInfo = ({ model, onClose }) => {
                                 textField={'contentTypeName'}
                                 itemRender={itemRenderContentType}
                             />
-                        </SC.AutoCompleteContainer>
+                        
                             <Button
                                 themeColor={"primary"}
                                 type={"submit"}
@@ -102,14 +106,15 @@ const GetTableInfo = ({ model, onClose }) => {
                             >
                                 Add
                             </Button>
+                        </SC.AutoCompleteContainer>
                     </FormElement>
                 )}
-            /> */}
+            /></>: 'You Need to add Column types first' : ''}
             <SC.ButtonContainer>
                 <Button
                     themeColor={"primary"}
                     type={"submit"}
-                // disabled={!formRenderProps.allowSubmit}
+                    disabled={tableData.length<0}
                     onClick={onClose}
                 >
                 Save
