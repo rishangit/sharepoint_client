@@ -1,27 +1,24 @@
 import React, { FC, memo, useState } from 'react';
-import * as SC from '../contentTypes.styled'
+import * as SC from '../tables.styled';
+import TableExpandedData from './tableExpandedData';
 import { TableDataIcon } from 'app-iconwithname';
 import { IconArrowUp, IconArrowDown, IconEdit, IconDelete } from '@app/icons';
 
-const ContentTypeTableData = ({ model, data, onDelete }) => {
+const tableSubTableData = ({model, data, onDelete}) => {
     const [renderSubTable, setRenderSubTable] = useState(false);
-
+    console.log(data)
     const onClckArrow = () => {
         setRenderSubTable(!renderSubTable)
     }
     const SubTableRender = () => {
         return (<>
-            {data.map(({ name, type }) =>
-                    <SC.ContentTableItem border={renderSubTable}>
-                        <SC.TableThreads span='1'>
-                        </SC.TableThreads >
-                        <TableDataIcon span='10' name={name} type={type} bgColor={renderSubTable} />
-                    </SC.ContentTableItem >
-                )}
-            </>)}
-    return (<>
-            <SC.ContentTableItem key={model.contentTypeName} border={renderSubTable}>
-                <TableDataIcon span='6' name={model.contentTypeName} type={'CONTENT'} >
+            {data.map(({ columnsAutoComplete, contentTypeAutoComplete }) =>
+                    <TableExpandedData columnData={columnsAutoComplete} contentTypeData={contentTypeAutoComplete}/>
+            )}</>)}
+    return (
+        <>
+            <SC.TableTypeTableItem key={model.tableName} border={renderSubTable}>
+                <TableDataIcon span='6' name={model.tableName} type={'TABLE'} >
                     <SC.TableIcon onClick={() => onClckArrow()}>
                         {(renderSubTable) ? <IconArrowUp /> : < IconArrowDown />}
                     </SC.TableIcon>
@@ -36,9 +33,10 @@ const ContentTypeTableData = ({ model, data, onDelete }) => {
                         <IconDelete />
                     </SC.TableIcon>
                 </SC.TableThreads>
-            </SC.ContentTableItem>
+            </SC.TableTypeTableItem>
             {renderSubTable && <SubTableRender />}
         </>
-    )}
+    )
+}
 
-export default ContentTypeTableData
+export default tableSubTableData

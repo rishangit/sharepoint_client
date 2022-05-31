@@ -1,11 +1,11 @@
 export const SET_TABLE_DATA = 'SET_TABLE_DATA';
 export const  REMOVE_TABLE_DATA = ' REMOVE_TABLE_DATA';
 
-export const setTableData = (payload : any) =>({
+export const setTableToReducerData = (payload : any) =>({
     type : SET_TABLE_DATA,
     payload
 })
-export const deleteTableData = (payload : any) =>({
+export const deleteTableDataFromReducer = (payload : any) =>({
     type :  REMOVE_TABLE_DATA,
     payload
 })

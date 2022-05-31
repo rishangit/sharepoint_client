@@ -11,7 +11,8 @@ import {
   faColumns,
   faFileImage,
   faFileExcel,
-  faCodeFork
+  faCodeFork,
+  faTableColumns
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { columnIconProps, tableDataIconProps } from 'app-interface'
@@ -53,6 +54,9 @@ export const ColumnIcon: FC<columnIconProps> = ({ type }) => {
       break;
     case 'CONTENT':
       icon = faCodeFork;
+      break;
+    case 'TABLE':
+      icon = faTableColumns;
       break;
     default:
       icon = faSpellCheck;

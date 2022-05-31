@@ -21,7 +21,7 @@ export interface contentTypesReducer{
   contentTypesList: any[]
   }
 export interface tablesReducer{
-  TablesList: any[]
+  tablesList: any[]
   }
 
 export interface rootState {

@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { columnThread, columnData, columnIcon } from "@modules/columns/types";
+import { columnThread, columnData, columnIcon, ContentTableItemProps } from "@modules/columns/types";
 import { ShadeColor } from "@sys/utils";
 import { Table, TableIcon, TableItem, TableThreads } from 'app-styled';
 
@@ -89,5 +89,10 @@ export const TableSubTypeTitle = styled.h4`
 export const ItemRenderWrapper = styled.div`
     display: flex;
     align-items: center;
+`;
+export const TableTypeTableItem: any = styled(TableItem)<ContentTableItemProps>`
+${ ({ theme, border }) =>border && css`
+    border-bottom : none
+`}
 `;
 export { Table, TableIcon, TableItem, TableThreads}

@@ -1,7 +1,7 @@
     import { SET_TABLE_DATA,  REMOVE_TABLE_DATA } from "./tables.action";
 // {dataList : Array<Object>}
 const initialState : any = {
-    TablesList: []
+    tablesList: []
 }
 
 const tablesReducer : any = (state = initialState, action) => {
@@ -10,11 +10,11 @@ const tablesReducer : any = (state = initialState, action) => {
     switch (type) {
         case SET_TABLE_DATA: return {
             ...state,
-            TablesList : [...state.TablesList,payload],
+            tablesList : [...state.tablesList,payload],
         }
         case  REMOVE_TABLE_DATA: return {
             ...state,
-            TablesList : [...payload],
+            tablesList : [...payload],
         }
         default: return state
     }

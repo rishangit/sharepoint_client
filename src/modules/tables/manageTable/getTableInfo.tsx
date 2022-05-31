@@ -8,11 +8,14 @@ import * as SC from '../tables.styled'
 import { tableInfoProps } from './constant'
 import { getColumnsList, getContentTypeList } from '@modules/tables/tables.selector';
 import { ColumnIcon } from 'app-iconwithname';
+import { setTableToReducerData } from '@modules/tables/tables.action';
 
 const GetTableInfo = ({ model, onClose, setHeight }) => {
+
     const [tableData,setTableData] = useState([])
     const [selectedValue,setSelectedValue] = useState('')
     const fliedProps: Object = tableInfoProps({ FormAutoCompleteDropDownList, FormRadioGroup})
+    const dispatch = useDispatch()
     const { dataList } = useSelector(getColumnsList)
     const { contentTypesList } = useSelector(getContentTypeList)
 
@@ -21,14 +24,18 @@ const GetTableInfo = ({ model, onClose, setHeight }) => {
 
     const onsubmit = (data: Object) => {
         setTableData([...tableData, data])
-        console.log('data', data)
+        console.log('tableData', tableData)
+    }
+    console.log('this is table data', tableData)
+    const saveTableData = () =>{
+        dispatch(setTableToReducerData({model,tableData: tableData}))
+        onClose()
     }
     const selectTableType = ({value}: any) => {
         setSelectedValue(value)
         setHeight(600)
         console.log(value)
     }
-    // console.log('setInitialHeight',setInitialHeight() )
     const itemRenderColumn = (li, itemProps) => {
         const itemChildren = (
             <SC.ItemRenderWrapper>
@@ -115,7 +122,7 @@ const GetTableInfo = ({ model, onClose, setHeight }) => {
                     themeColor={"primary"}
                     type={"submit"}
                     disabled={tableData.length<0}
-                    onClick={onClose}
+                    onClick={saveTableData}
                 >
                 Save
             </Button>
