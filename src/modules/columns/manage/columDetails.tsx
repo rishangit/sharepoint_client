@@ -17,7 +17,7 @@ import { ColumnType } from "../types"
 import { fieldElementProps, columnTypeProps } from "@modules/columns/manage/constant";
 import { SET_COLUMN_DATA } from "@modules/columns/action";
 import { getGruopList } from "@modules/groups/selector";
-import { getDataList } from "@modules/columns/columns.selector";
+import { getDataList, getColumnFromState } from "@modules/columns/columns.selector";
 import * as SC from './manage.styled';
 
 const ColumnDetails = ({ model, onClose }) => {
@@ -41,11 +41,11 @@ const ColumnDetails = ({ model, onClose }) => {
     FormDropDownList,
     FormTextArea
   })
-
+  
   const ColumnTextFileds = () => (
     <SC.ManageWindowContainer>
       <h2>Add New {model.type} Field</h2>
-      <Form onSubmit={onsubmit} render={
+      <Form onSubmit={onsubmit} initialValues={{name : 'ABC'}} render={
         (formRenderProps: FormRenderProps) => (
           <FormElement >
             <Field
@@ -190,7 +190,6 @@ const ColumnDetails = ({ model, onClose }) => {
     case ColumnType.NUMBER:
     case ColumnType.DATE:
       return (
-
         <ColumnNumberFileds />
       )
     default: return (

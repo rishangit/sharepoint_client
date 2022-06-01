@@ -1,4 +1,4 @@
-import { FC, memo, useState } from "react";
+import { FC, memo, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { NewButton, PopupWindow } from "@app/common";
@@ -14,9 +14,15 @@ const ListComponent: FC = () => {
   const dispatch = useDispatch()
   const { columnReducer }: any = useSelector(state => state)
   const [showManage, setShowManage] = useState(false);
+  const [manageID, setManageID] = useState(null);
+
 
   const onclick = () => {
     setShowManage(true);
+  };
+
+  const editColumn = (name) => {
+    setManageID(name)
   };
 
   const header: HeaderType = {
@@ -38,7 +44,7 @@ const ListComponent: FC = () => {
     <SC.ColumnsWrapper>
       <HeaderComponent {...header}></HeaderComponent>
       <PopupWindow show={showManage} onClose={() => setShowManage(false)} title={'Add Column'}>
-        <ManageColumns onClose={popupWindowClose} />
+        <ManageColumns onClose={popupWindowClose} manageID={manageID} show={()=>setShowManage(true)}/>
       </PopupWindow>
       {(columnReducer.dataList.length !== 0) && <SC.Table>
         <SC.TableItem>
@@ -70,7 +76,7 @@ const ListComponent: FC = () => {
                   {groupType}
                 </SC.TableThreads>
                 <SC.TableThreads span='1'>
-                  <SC.TableIcon>
+                  <SC.TableIcon onClick={() => editColumn(name)}>
                     <IconEdit />
                   </SC.TableIcon>
                   <SC.TableIcon onClick={() => deleteColumn(name)}>
