@@ -42,6 +42,7 @@ const mapColumnType = (type) => {
 const inputValidator = (value) => (!value ? "* required" : "");
 
 const fieldElementProps = ({ model, FormRadioGroup, FormInput, FormDropDownList, FormTextArea }) => {
+  console.log('model', model)
   return (
     {
       columnName: {
@@ -178,6 +179,18 @@ const columnTypeProps = [
     desc: 'Add your Calculated Formula here',
   }
 ]
+
+export const getTitle = ( type) =>{
+  switch(type) {
+    case 2 : return 'Text';
+    case 'RICHTEXT': return 'Rich Text';
+    case 'EMAIL': return 'Email';
+    case 'PASSWORD': return 'Password';
+    case 9 : return 'Number';
+    case 4 : return 'Date';
+    default: return '' 
+  }
+}
 
 export { fieldElementProps, columnTypeProps }
 
