@@ -61,4 +61,12 @@ export const ColumnIcon: any = styled.div<columnIcon>`
             border-radius : ${theme['border-radius']};
     `}
 `
+export const ColumnTableWrapper = styled.div`
+    height: calc(100vh - 230px);
+    position: relative;
+    overflow: auto;
+    ${({ theme }) => css`
+
+    `}
+`
 export { Table, TableIcon, TableItem, TableThreads }

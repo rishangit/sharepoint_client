@@ -6,8 +6,10 @@ import * as SC from "../columns.styled";
 import HeaderComponent, { HeaderType } from "@modules/header";
 import ManageColumns from "../manage";
 import { IconDelete, IconEdit } from "@app/icons";
-import { deleteColumnData } from "@modules/columns/action";
+import { deleteColumnData, getColumnData } from "@modules/columns/action";
 import { TableDataIcon } from 'app-iconwithname'
+import { getGruopList } from "@modules/groups/selector";
+import { getGroupData } from "@modules/groups/action";
 
 
 const ListComponent: FC = () => {
@@ -15,7 +17,14 @@ const ListComponent: FC = () => {
   const { columnReducer }: any = useSelector(state => state)
   const [showManage, setShowManage] = useState(false);
   const [manageID, setManageID] = useState(null);
+  const groupList = getGruopList();
 
+  useEffect(() => {
+    dispatch(getColumnData({}))
+    if (groupList.length == 0) {
+      dispatch(getGroupData({}))
+    }
+  }, [])
 
   const onclick = () => {
     setShowManage(true);
@@ -44,7 +53,7 @@ const ListComponent: FC = () => {
     <SC.ColumnsWrapper>
       <HeaderComponent {...header}></HeaderComponent>
       <PopupWindow show={showManage} onClose={() => setShowManage(false)} title={'Add Column'}>
-        <ManageColumns onClose={popupWindowClose} manageID={manageID} show={()=>setShowManage(true)}/>
+        <ManageColumns onClose={popupWindowClose} manageID={manageID} show={() => setShowManage(true)} />
       </PopupWindow>
       {(columnReducer.dataList.length !== 0) && <SC.Table>
         <SC.TableItem>
@@ -64,27 +73,29 @@ const ListComponent: FC = () => {
             </h6>
           </SC.TableThreads>
         </SC.TableItem>
-        {
-          columnReducer.dataList.map(
-            ({ type, name, groupType }, index) => (
-              <SC.TableItem key={index}>
-                <TableDataIcon span='4' type={type} name={name} />
-                <SC.TableThreads span='3'>
-                  {type}
-                </SC.TableThreads>
-                <SC.TableThreads span='4'>
-                  {groupType}
-                </SC.TableThreads>
-                <SC.TableThreads span='1'>
-                  <SC.TableIcon onClick={() => editColumn(name)}>
-                    <IconEdit />
-                  </SC.TableIcon>
-                  <SC.TableIcon onClick={() => deleteColumn(name)}>
-                    <IconDelete />
-                  </SC.TableIcon>
-                </SC.TableThreads>
-              </SC.TableItem>
-            ))}
+        <SC.ColumnTableWrapper>
+          {
+            columnReducer.dataList.map(
+              ({ fieldType, fieldTypeId, title, group }, index) => (
+                <SC.TableItem key={index}>
+                  <TableDataIcon span='4' type={fieldTypeId} name={title} />
+                  <SC.TableThreads span='3'>
+                    {fieldType}
+                  </SC.TableThreads>
+                  <SC.TableThreads span='4'>
+                    {group}
+                  </SC.TableThreads>
+                  <SC.TableThreads span='1'>
+                    <SC.TableIcon onClick={() => editColumn(name)}>
+                      <IconEdit />
+                    </SC.TableIcon>
+                    <SC.TableIcon onClick={() => deleteColumn(name)}>
+                      <IconDelete />
+                    </SC.TableIcon>
+                  </SC.TableThreads>
+                </SC.TableItem>
+              ))}
+        </SC.ColumnTableWrapper>
       </SC.Table>
       }
     </SC.ColumnsWrapper>

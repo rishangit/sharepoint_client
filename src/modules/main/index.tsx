@@ -5,15 +5,9 @@ import HeaderComponent from "../header";
 import NavigationComponent from "../navigation";
 import { MainWrapper } from "./main.styled";
 import { useDispatch } from "react-redux";
-import { setGroupData } from "@modules/groups/action";
-import { groupList } from "@modules/groups/constant";
 
 const MainComponent: FC = (props: any) => {
   const dispatch = useDispatch()
-  useEffect(() => {
-      dispatch(setGroupData(groupList))
-  }, [])
-
   return (
     <>
       <NavigationComponent />

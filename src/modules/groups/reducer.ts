@@ -10,7 +10,7 @@ const groupReducer : any = (state = initialState, action) => {
     switch (type) {
         case SET_GROUP_DATA: return {
             ...state,
-            groupList : [...state.groupList,...payload],
+            groupList : payload,
         }
         case  REMOVE_GROUP_DATA: return {
             ...state,

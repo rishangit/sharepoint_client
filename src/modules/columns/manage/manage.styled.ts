@@ -19,6 +19,35 @@ export const ManageWindowContainer = styled.div`
     }
 `;
 
+export const ColumnTypeRadioWrapper = styled.div`
+    .k-radio-list{
+        flex-direction: row;
+        margin: .5rem 0;
+    } 
+    .k-radio-item{
+        ${({ theme }) => css`
+            border: 2px solid ${theme.secondary};
+            border-radius : ${theme['border-radius']};
+            padding: 1rem 1rem;
+            margin-right: 1rem;
+            &:hover{
+                background-color: ${theme.secondary};
+            }
+        `}
+    }
+    .k-radio{
+        margin-right: .5rem;
+    }  
+`;
+
+export const ColumnGruopTypeTitle = styled.h4`
+    margin-top: 1.5rem;
+    padding-bottom: .5rem;
+    ${ ({ theme }) => css`
+    border-bottom : 1px solid ${theme.secondary}
+    `}
+`;
+
 export const ButtonContainer = styled.div`
         position: absolute;
         bottom: 1rem;

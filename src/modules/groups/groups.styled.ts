@@ -8,4 +8,12 @@ export const GroupsWrapper = styled.div`
     display:flex;
     flex-direction:column;
 `
+export const GroupsTableWrapper = styled.div`
+    height: calc(100vh - 230px);
+    position: relative;
+    overflow: auto;
+    ${({ theme }) => css`
+
+    `}
+`
 export { Table, TableIcon, TableItem, TableThreads}

@@ -8,7 +8,7 @@ import HeaderComponent, { HeaderType } from "@modules/header";
 // import ManageGroups from "../manage";
 import { groupList } from '../constant';
 import { IconDelete, IconEdit } from "@app/icons";
-import { deleteGroupData } from "@modules/groups/action";
+import { deleteGroupData, getGroupData } from "@modules/groups/action";
 import { getGruopList } from "@modules/groups/selector";
 import GroupAdder from "./addGroup";
 
@@ -16,8 +16,13 @@ import GroupAdder from "./addGroup";
 const GroupListComponent: FC = () => {
   const [showManage, setShowManage] = useState(false);
   const dispatch = useDispatch()
-  const { groupList } = useSelector(getGruopList);
+  const groupList = getGruopList();
 
+  useEffect(() => {
+    if(groupList.length == 0){
+      dispatch(getGroupData({}))
+    }
+  }, [])
   const onclick = () => {
     setShowManage(true);  
   };
@@ -57,22 +62,24 @@ const GroupListComponent: FC = () => {
               </h6>
             </SC.TableThreads>
           </SC.TableItem>
-          {groupList.map(({ name }: any, index) =>
-            <SC.TableItem key={index}>
-              <SC.TableThreads span='4'>
-                <h6>
-                  {name}
-                </h6>
-              </SC.TableThreads>
-              <SC.TableThreads span='7'>
-              </SC.TableThreads>
-              <SC.TableThreads span='1' >
-                <SC.TableIcon onClick={() => deleteGroups(name)}>
-                  <IconDelete />
-                </SC.TableIcon>
-              </SC.TableThreads>
-            </SC.TableItem>
-          )}
+          <SC.GroupsTableWrapper>
+            {groupList.map(( name: any, index) =>
+              <SC.TableItem key={index}>
+                <SC.TableThreads span='4'>
+                  <h6>
+                    {name}
+                  </h6>
+                </SC.TableThreads>
+                <SC.TableThreads span='7'>
+                </SC.TableThreads>
+                <SC.TableThreads span='1' >
+                  {/* <SC.TableIcon onClick={() => deleteGroups(name)}>
+                    <IconDelete />
+                  </SC.TableIcon> */}
+                </SC.TableThreads>
+              </SC.TableItem>
+            )}
+          </SC.GroupsTableWrapper>
         </SC.Table>}
     </SC.GroupsWrapper>
   );

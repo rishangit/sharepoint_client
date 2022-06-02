@@ -1,10 +1,13 @@
 import { ColumnType } from "@modules/columns/types";
-import { useSelector } from 'react-redux'
-import { getGruopList } from "@modules/groups/selector";
 
 const radioData: Array<Object> = [
   { label: "Short Text", value: "shortText" },
   { label: "Long Text", value: "longText" },
+];
+
+const groupRadioData: Array<Object> = [
+  { label: "Create New Group", value: "newGruop" },
+  { label: "Use Exsisting Gruop", value: "exGruop" },
 ];
 
 const numberTypes: Array<String> = [
@@ -17,8 +20,26 @@ const dateTypes: Array<String> = [
   "time",
 ];
 
-const inputValidator = (value) => (!value ? "* required" : "");
+export const setParamAddColumn = (data ) => (
+  {
+    fieldType: mapColumnType(data.type),
+    name: data.name,
+    description: data.name,
+    listId: "",
+    columnGroup: data.groupType
+  }
+)
 
+const mapColumnType = (type)=>{
+    switch(type){
+      case ColumnType.TEXT :
+      case ColumnType.RICHTEXT :
+      return  ColumnType.TEXT;
+      default : return type;
+    }
+}
+
+const inputValidator = (value) => (!value ? "* required" : "");
 
 const fieldElementProps = ({ model, FormRadioGroup, FormInput, FormDropDownList, FormTextArea }) => {
   return (
@@ -31,6 +52,14 @@ const fieldElementProps = ({ model, FormRadioGroup, FormInput, FormDropDownList,
         hint: 'Hint : Enter the Column Name',
         validator: inputValidator,
       },
+      GroupName: {
+        id: 'gruopName',
+        label: 'Gruop Name',
+        name: 'gruopName',
+        component: FormInput,
+        hint: 'Hint : Enter the Gruop Name',
+        validator: inputValidator,
+      },
       radio: {
         id: 'textType',
         name: 'textType',
@@ -39,6 +68,16 @@ const fieldElementProps = ({ model, FormRadioGroup, FormInput, FormDropDownList,
         component: FormRadioGroup,
         // defaultValue: radioData[0].value,
         hint: 'Hint : Enter the Column Type',
+        validator: inputValidator,
+      },
+      groupRadio: {
+        id: 'gruopType',
+        name: 'gruopType',
+        label: 'Select Group',
+        data: groupRadioData,
+        component: FormRadioGroup,
+        // defaultValue: radioData[0].value,
+        hint: 'Hint : Select the Group Type',
         validator: inputValidator,
       },
       dropDown: {

@@ -15,23 +15,18 @@ import {
 } from "input-component";
 import { ColumnType } from "../types"
 import { fieldElementProps, columnTypeProps } from "@modules/columns/manage/constant";
-import { SET_COLUMN_DATA } from "@modules/columns/action";
 import { getGruopList } from "@modules/groups/selector";
-import { getDataList, getColumnFromState } from "@modules/columns/columns.selector";
 import * as SC from './manage.styled';
 
-const ColumnDetails = ({ model, onClose }) => {
+const ColumnDetails = ({ model, setModel }) => {
   const dispatch = useDispatch()
+  const groupList = getGruopList();
 
-  const { groupList } = useSelector(getGruopList)
-  const { dataList } = useSelector(getDataList)
-
-  const gruopData: Array<String> = groupList.map(({ name }) => name)
-  const lookUpData: Array<String> = dataList.map(({ name }) => name)
+  const gruopData: Array<String> = groupList
+  const lookUpData: Array<String> = gruopData
 
   const onsubmit = (data: Object) => {
-    dispatch({ type: SET_COLUMN_DATA, payload: { ...data, ...model } })
-    onClose(false)
+    setModel((prev: any) => ({ ...prev,...data }))
   }
 
   const fliedProps: Object = fieldElementProps({
@@ -45,26 +40,24 @@ const ColumnDetails = ({ model, onClose }) => {
   const ColumnTextFileds = () => (
     <SC.ManageWindowContainer>
       <h2>Add New {model.type} Field</h2>
-      <Form onSubmit={onsubmit} initialValues={{name : 'ABC'}} render={
+      <Form onSubmit={onsubmit} render={
         (formRenderProps: FormRenderProps) => (
           <FormElement >
             <Field
               {...fliedProps['columnName']}
             />
+            <SC.ColumnTypeRadioWrapper>
             {model.type === ColumnType.TEXT && <Field
               {...fliedProps['radio']}
             />}
-            {gruopData.length > 0 && <Field
-              {...fliedProps['GroupdropDown']}
-              data={gruopData}
-            />}
+            </SC.ColumnTypeRadioWrapper>
             <SC.ButtonContainer>
               <Button
                 themeColor={"primary"}
                 type={"submit"}
                 disabled={!formRenderProps.allowSubmit}
               >
-                Submit
+                Next
               </Button>
             </SC.ButtonContainer>
           </FormElement>
@@ -85,17 +78,13 @@ const ColumnDetails = ({ model, onClose }) => {
               {...fliedProps['calculatedTextArea']}
               value={formRenderProps.valueGetter("sendInvitation")}
             />
-            {gruopData.length > 0 && <Field
-              {...fliedProps['GroupdropDown']}
-              data={gruopData}
-            />}
             <SC.ButtonContainer>
               <Button
                 themeColor={"primary"}
                 type={"submit"}
                 disabled={!formRenderProps.allowSubmit}
               >
-                Submit
+                Next
               </Button>
             </SC.ButtonContainer>
           </FormElement>
@@ -106,7 +95,7 @@ const ColumnDetails = ({ model, onClose }) => {
   const ColumnLookUpFileds = () => (
     <SC.ManageWindowContainer>
       <h2>Add New {model.type} Field</h2>
-      {dataList.length > 0 ? <Form onSubmit={onsubmit} render={
+      {groupList.length > 0 ? <Form onSubmit={onsubmit} render={
         (formRenderProps: FormRenderProps) => (
           <FormElement >
             <Field
@@ -116,17 +105,13 @@ const ColumnDetails = ({ model, onClose }) => {
               {...fliedProps['LookUpdropDown']}
               data={lookUpData}
             />
-            {gruopData.length > 0 && <Field
-              {...fliedProps['GroupdropDown']}
-              data={gruopData}
-            />}
             <SC.ButtonContainer>
               <Button
                 themeColor={"primary"}
                 type={"submit"}
                 disabled={!formRenderProps.allowSubmit}
               >
-                Submit
+                Next
               </Button>
             </SC.ButtonContainer>
           </FormElement>
@@ -151,17 +136,13 @@ const ColumnDetails = ({ model, onClose }) => {
             <Field
               {...fliedProps['dropDown']}
             />
-            {gruopData.length > 0 && <Field
-              {...fliedProps['GroupdropDown']}
-              data={gruopData}
-            />}
             <SC.ButtonContainer>
               <Button
                 themeColor={"primary"}
                 type={"submit"}
                 disabled={!formRenderProps.allowSubmit}
               >
-                Submit
+                Next
             </Button>
             </SC.ButtonContainer>
           </FormElement>
