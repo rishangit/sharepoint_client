@@ -48,6 +48,24 @@ export const ColumnGruopTypeTitle = styled.h4`
     `}
 `;
 
+export const GroupInputContainer = styled.div`
+    display:flex;
+    
+    flex-direction:row;
+    gap: 5%;
+    align-items: center;
+    button{
+        height: fit-content;
+        margin: 1.5rem 0 0 2rem;
+    }
+    .k-form-field-wrap{
+        width: auto !important;
+    }
+    .k-form-field{
+        width: 50%;
+    }
+`;
+
 export const ButtonContainer = styled.div`
         position: absolute;
         bottom: 1rem;

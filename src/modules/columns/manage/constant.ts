@@ -20,23 +20,23 @@ const dateTypes: Array<String> = [
   "time",
 ];
 
-export const setParamAddColumn = (data ) => (
-  {
+export const setParamAddColumn = (data) =>
+  ({
     fieldType: mapColumnType(data.type),
     name: data.name,
     description: data.name,
     listId: "",
     columnGroup: data.groupType
-  }
-)
+  })
 
-const mapColumnType = (type)=>{
-    switch(type){
-      case ColumnType.TEXT :
-      case ColumnType.RICHTEXT :
-      return  ColumnType.TEXT;
-      default : return type;
-    }
+
+const mapColumnType = (type) => {
+  switch (type) {
+    case ColumnType.TEXT:
+    case ColumnType.RICHTEXT:
+      return ColumnType.TEXT;
+    default: return type;
+  }
 }
 
 const inputValidator = (value) => (!value ? "* required" : "");
@@ -52,10 +52,10 @@ const fieldElementProps = ({ model, FormRadioGroup, FormInput, FormDropDownList,
         hint: 'Hint : Enter the Column Name',
         validator: inputValidator,
       },
-      GroupName: {
-        id: 'gruopName',
+      groupName: {
+        id: 'groupType',
         label: 'Gruop Name',
-        name: 'gruopName',
+        name: 'groupType',
         component: FormInput,
         hint: 'Hint : Enter the Gruop Name',
         validator: inputValidator,

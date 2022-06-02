@@ -22,6 +22,7 @@ import { addColumnData } from '@modules/columns/action';
 
 const GruopDetails = ({ model, onClose }) => {
     const [selectedValue, setSelectedValue] = useState('');
+    const [getNewGroup, setGetNewGroup] = useState({});
     const dispatch = useDispatch();
     const groupList = getGruopList();
     const gruopData: Array<String> = groupList
@@ -30,9 +31,17 @@ const GruopDetails = ({ model, onClose }) => {
         dispatch(addColumnData(setParamAddColumn({ ...data, ...model })))
         onClose()
     }
+    const saveColumnTypeWithNewgruop = () => {
+        dispatch(addColumnData(setParamAddColumn({ ...getNewGroup, ...model })))
+        onClose()
+    }
     const selectTableType = ({ value }: any) => {
         setSelectedValue(value)
     }
+    const addNewGruop = (data) => {
+        setGetNewGroup(data)
+    }
+
     const fliedProps: Object = fieldElementProps({
         model,
         FormInput,
@@ -44,7 +53,6 @@ const GruopDetails = ({ model, onClose }) => {
     return (
         <>
             <SC.ManageWindowContainer>
-                <h2>Add Gruop Type</h2>
                 <Form render={
                     (formRenderProps: FormRenderProps) => (
                         <FormElement >
@@ -58,7 +66,7 @@ const GruopDetails = ({ model, onClose }) => {
                     )}
                 />
                 {selectedValue == 'exGruop' && <>
-                    <SC.ColumnGruopTypeTitle>Select the Gruop Types</SC.ColumnGruopTypeTitle>
+                    <SC.ColumnGruopTypeTitle>Selecit From Exsisting Group</SC.ColumnGruopTypeTitle>
                     <Form onSubmit={onsubmit} render={
                         (formRenderProps: FormRenderProps) => (
                             <FormElement >
@@ -82,9 +90,34 @@ const GruopDetails = ({ model, onClose }) => {
                     />
                 </>}
                 {selectedValue == 'newGruop' && <div style={{ marginTop: '2rem' }}>
-                    <h5>
-                        You have Choose Exsiting Columns
-                    </h5>
+                    <SC.ColumnGruopTypeTitle>Add new Gruop Type</SC.ColumnGruopTypeTitle>
+                    <Form onSubmit={addNewGruop} render={
+                        (formRenderProps: FormRenderProps) => (
+                            <FormElement >
+                                <SC.GroupInputContainer>
+                                    <Field
+                                        {...fliedProps['groupName']}
+                                    />
+                                    <Button
+                                        themeColor={"primary"}
+                                        type={"submit"}
+                                        disabled={!formRenderProps.allowSubmit}
+                                    >
+                                        Add
+                            </Button>
+                                </SC.GroupInputContainer>
+                            </FormElement>
+                        )} />
+                    <SC.ButtonContainer>
+                        <Button
+                            themeColor={"primary"}
+                            type={"submit"}
+                            // disabled={}
+                            onClick={saveColumnTypeWithNewgruop}
+                            >
+                            Save
+                        </Button>
+                    </SC.ButtonContainer>
                 </div>
                 }
             </SC.ManageWindowContainer>
