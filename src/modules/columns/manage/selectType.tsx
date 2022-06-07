@@ -6,8 +6,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const SelectType = ({ setModel }) => {
-  const onSelect = (key) => {
-    setModel((prev: Column) => ({ ...prev, type: key }));
+  const onSelect = (type, name) => {
+    setModel((prev: Column) => ({ ...prev, type: type, name: name }));
   };
   return (
     <>
@@ -19,7 +19,7 @@ const SelectType = ({ setModel }) => {
       <SC.ColumnCategory>
         {
           columnTypeProps.map(({ type, name, desc }) =>
-            <SC.ColumnItem key={type} onClick={() => onSelect(type)}>
+            <SC.ColumnItem key={type} onClick={() => onSelect(type, name)}>
               <SC.ColumnData flexDirection='row'>
                 <ColumnIcon type={type} />
               </SC.ColumnData>

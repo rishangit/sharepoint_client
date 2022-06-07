@@ -14,7 +14,7 @@ import {
   FormTextArea
 } from "input-component";
 import { ColumnType } from "../types"
-import { fieldElementProps, columnTypeProps, getTitle } from "@modules/columns/manage/constant";
+import { fieldElementProps, columnTypeProps } from "@modules/columns/manage/constant";
 import { getGruopList } from "@modules/groups/selector";
 import * as SC from './manage.styled';
 
@@ -39,7 +39,7 @@ const ColumnDetails = ({ model, setModel }) => {
   
   const ColumnTextFileds = () => (
     <SC.ManageWindowContainer>
-      <h2>Add New {getTitle(model.type) } Field</h2>
+      <h2>Add New {model.name } Field</h2>
       <Form onSubmit={onsubmit} render={
         (formRenderProps: FormRenderProps) => (
           <FormElement >
@@ -67,7 +67,7 @@ const ColumnDetails = ({ model, setModel }) => {
 
   const ColumnCalculatedFileds = () => (
     <SC.ManageWindowContainer>
-      <h2>Add New {model.type} Field</h2>
+      <h2>Add New {model.name} Field</h2>
       <Form onSubmit={onsubmit} render={
         (formRenderProps: FormRenderProps) => (
           <FormElement >
@@ -94,7 +94,7 @@ const ColumnDetails = ({ model, setModel }) => {
 
   const ColumnLookUpFileds = () => (
     <SC.ManageWindowContainer>
-      <h2>Add New {model.type} Field</h2>
+      <h2>Add New {model.name} Field</h2>
       {groupList.length > 0 ? <Form onSubmit={onsubmit} render={
         (formRenderProps: FormRenderProps) => (
           <FormElement >
@@ -126,7 +126,7 @@ const ColumnDetails = ({ model, setModel }) => {
 
   const ColumnNumberFileds = () => (
     <SC.ManageWindowContainer>
-      <h2>Add New {getTitle(model.type)} Field</h2>
+      <h2>Add New {model.name} Field</h2>
       <Form onSubmit={onsubmit} render={
         (formRenderProps: FormRenderProps) => (
           <FormElement>

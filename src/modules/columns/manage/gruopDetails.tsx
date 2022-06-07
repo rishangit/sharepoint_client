@@ -22,24 +22,16 @@ import { addColumnData } from '@modules/columns/action';
 
 const GruopDetails = ({ model, onClose }) => {
     const [selectedValue, setSelectedValue] = useState('');
-    const [getNewGroup, setGetNewGroup] = useState({});
     const dispatch = useDispatch();
     const groupList = getGruopList();
     const gruopData: Array<String> = groupList
 
-    const onsubmit = (data: Object) => {
-        dispatch(addColumnData(setParamAddColumn({ ...data, ...model })))
-        onClose()
-    }
-    const saveColumnTypeWithNewgruop = () => {
-        dispatch(addColumnData(setParamAddColumn({ ...getNewGroup, ...model })))
-        onClose()
-    }
     const selectTableType = ({ value }: any) => {
         setSelectedValue(value)
     }
-    const addNewGruop = (data) => {
-        setGetNewGroup(data)
+    const onSubmit = (data: Object) => {
+        dispatch(addColumnData(setParamAddColumn({ ...data, ...model })))
+        onClose()
     }
 
     const fliedProps: Object = fieldElementProps({
@@ -91,33 +83,23 @@ const GruopDetails = ({ model, onClose }) => {
                 </>}
                 {selectedValue == 'newGruop' && <div style={{ marginTop: '2rem' }}>
                     <SC.ColumnGruopTypeTitle>Add new Gruop Type</SC.ColumnGruopTypeTitle>
-                    <Form onSubmit={addNewGruop} render={
+                    <Form onSubmit={onSubmit} render={
                         (formRenderProps: FormRenderProps) => (
                             <FormElement >
-                                <SC.GroupInputContainer>
-                                    <Field
-                                        {...fliedProps['groupName']}
-                                    />
+                                <Field
+                                    {...fliedProps['groupName']}
+                                />
+                                <SC.ButtonContainer>
                                     <Button
                                         themeColor={"primary"}
                                         type={"submit"}
                                         disabled={!formRenderProps.allowSubmit}
                                     >
-                                        Add
-                            </Button>
-                                </SC.GroupInputContainer>
+                                        Save
+                                        </Button>
+                                </SC.ButtonContainer>
                             </FormElement>
                         )} />
-                    <SC.ButtonContainer>
-                        <Button
-                            themeColor={"primary"}
-                            type={"submit"}
-                            // disabled={}
-                            onClick={saveColumnTypeWithNewgruop}
-                            >
-                            Save
-                        </Button>
-                    </SC.ButtonContainer>
                 </div>
                 }
             </SC.ManageWindowContainer>
@@ -125,4 +107,4 @@ const GruopDetails = ({ model, onClose }) => {
     )
 }
 
-export default memo(GruopDetails);
+export default memo(GruopDetails);  
